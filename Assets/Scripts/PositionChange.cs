@@ -10,27 +10,16 @@ public class PositionChange : MonoBehaviour
    
     public GameObject anotherCircel;
     public int mass = 0;
-    public float timer = 10.0f;
-    public float timeSeter;
-    public float waitTime = 1.0f;
+    private float timer = 10.0f;
+    private float waitTime = 1.0f;
 
-    public float SpeedX = 0;
-    public float SpeedY = 0;
-    public float SpeedZ = 0;
+    private float SpeedX = 0;
+    private float SpeedY = 0;
+    private float SpeedZ = 0;
 
     public float accelerationX = 0.01f;
     public float accelerationY = 0.01f;
     public float accelerationZ = 0.0f;
-
-
-    void Start()
-    {
-        // This part of the code is made for the to recieve information  of about onceself object and just put it in 
-        /*Vector3 position = anotherCircel.transform.position;
-        Debug.Log(position);
-        xCordinat = position[0];
-        Debug.Log(xCordinat);*/
-    }
 
     void Update()
     {
@@ -48,6 +37,7 @@ public class PositionChange : MonoBehaviour
 
     }
 
+    //This changes the position of the object, simply making it fly arond from the speed
     public Vector3 PositionsChange(float SpeedX, float SpeedY, float SpeedZ, Vector3 postition)
     {
         postition[0] = postition[0] + SpeedX;
@@ -55,6 +45,7 @@ public class PositionChange : MonoBehaviour
         postition[2] = postition[2] + SpeedZ;
         return postition;
     }
+    //This calcurlate the speed of every object, and take the acceleration as consideration
     public float Acceleration(float speed, float acceleration)
     {
         speed = acceleration + speed;
