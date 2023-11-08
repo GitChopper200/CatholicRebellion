@@ -10,20 +10,21 @@ public class PositionChange : MonoBehaviour
    
     public GameObject anotherCircel;
     public int mass = 0;
-    private float timer = 10.0f;
-    private float waitTime = 1.0f;
+    private float timer = 10.25f;
+    private float waitTime = 0.25f;
 
     private float SpeedX = 0;
     private float SpeedY = 0;
     private float SpeedZ = 0;
 
-    public float accelerationX = 0.01f;
-    public float accelerationY = 0.01f;
+    public float accelerationX = 0.0f;
+    public float accelerationY = 0.0f;
     public float accelerationZ = 0.0f;
 
     void Update()
     {
-        //This is just a testTimer to test if things work. We look at this after sometimes 
+        //This is just a testTimer to test if things work. We look at this after sometimes later
+        //This also check acceleration and call for the functions, to 
         timer += Time.deltaTime;
         if (waitTime < timer)
         {
