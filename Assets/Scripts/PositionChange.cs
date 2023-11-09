@@ -7,19 +7,25 @@ using UnityEngine;
 using UnityEngine.UIElements;
 public class PositionChange : MonoBehaviour
 {
-   
+
     public GameObject anotherCircel;
+    private Acceleration AccelerationScript;
+
     public int mass = 0;
     private float timer = 10.25f;
     private float waitTime = 0.25f;
-
+    
+    [SerializeField]
     private float SpeedX = 0;
+    [SerializeField]
     private float SpeedY = 0;
+    [SerializeField]
     private float SpeedZ = 0;
 
-    public float accelerationX = 0.0f;
-    public float accelerationY = 0.0f;
-    public float accelerationZ = 0.0f;
+    private void Start()
+    {
+        AccelerationScript = GetComponent<Acceleration>();
+    }
 
     void Update()
     {
@@ -28,10 +34,14 @@ public class PositionChange : MonoBehaviour
         timer += Time.deltaTime;
         if (waitTime < timer)
         {
+
+
             Vector3 positionOwn = this.transform.position;
-            SpeedX = Acceleration(SpeedX, accelerationX);
-            SpeedY = Acceleration(SpeedY, accelerationY);
-            SpeedZ = Acceleration(SpeedZ, accelerationZ);
+
+            //Here is the reference to the script so that the acceleration is been taken in the script. And the change of position and speed is taken in here. Q
+            SpeedX = AccelerationScript.AccelerationFunction(SpeedX, AccelerationScript.accelerationX);
+            SpeedY = AccelerationScript.AccelerationFunction(SpeedY, AccelerationScript.accelerationY);
+            SpeedZ = AccelerationScript.AccelerationFunction(SpeedZ, AccelerationScript.accelerationZ);
             this.transform.position = PositionsChange(SpeedX, SpeedY, SpeedZ, positionOwn);
             timer = 0;
         }
@@ -47,11 +57,5 @@ public class PositionChange : MonoBehaviour
         return postition;
     }
     //This calcurlate the speed of every object, and take the acceleration as consideration
-    public float Acceleration(float speed, float acceleration)
-    {
-        speed = acceleration + speed;
-
-        return speed;
-    }
 }
 
