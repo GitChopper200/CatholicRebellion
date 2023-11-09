@@ -6,6 +6,7 @@ public class Acceleration : MonoBehaviour
 {
 
     private PositionChange PositionScript;
+    private ShipController ShipController;
     
     public float accelerationX = 0.0f;
     public float accelerationY = 0.0f;
