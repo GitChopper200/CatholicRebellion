@@ -7,13 +7,14 @@ using UnityEngine;
 using UnityEngine.UIElements;
 public class PositionChange : MonoBehaviour
 {
-
+    //This is from The 
     public GameObject anotherCircel;
+
     private Acceleration AccelerationScript;
 
     public int mass = 0;
     private float timer = 10.25f;
-    private float waitTime = 0.25f;
+    public float waitTime = 0.05f;
     
     [SerializeField]
     private float SpeedX = 0;
