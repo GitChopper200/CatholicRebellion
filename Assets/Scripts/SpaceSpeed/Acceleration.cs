@@ -7,6 +7,7 @@ public class Acceleration : MonoBehaviour
 
     private PositionChange PositionScript;
     private ShipController ShipController;
+    private Gravity gravity1;
     
     public float accelerationX = 0.0f;
     public float accelerationY = 0.0f;
@@ -19,15 +20,16 @@ public class Acceleration : MonoBehaviour
     {
         PositionScript = GetComponent<PositionChange>();
         ShipController = GetComponent<ShipController>();
+        gravity1 = GetComponent<Gravity>();
     }
     void Update()
     {
         //This send the acceleration to the PositionChange script, so it can flow around in space.
         //This is also the reciver of everything that have something to do with acceleration. 
         if (ShipController != null) {
-            accelerationX = accelerationX + ShipController.ShipAccelerationX;
-            accelerationY = accelerationY + ShipController.ShipAccelerationY;
-            accelerationZ += ShipController.ShipAccelerationZ;
+            accelerationX += ShipController.ShipAccelerationX + gravity1.GravitationelAccellerationX;
+            accelerationY += ShipController.ShipAccelerationY + gravity1.GravitationelAccellerationY;
+            accelerationZ += ShipController.ShipAccelerationZ + gravity1.GravitationelAccellerationZ;
         }
         timer += Time.deltaTime;
         if (timer > waitTime)

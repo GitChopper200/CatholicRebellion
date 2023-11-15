@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -6,23 +7,32 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    private PositionChange Change;
+    //private PositionChange Change;
     public GameObject[] GravityGameObject;
-    private Object ownGravity;
+    private Gravity ownGravity;
     
     private Gravity Gravity3;
 
     private float timer = 10.25f;
-    private float waitTime = 1.0f;
+    private float waitTime = 5.0f;
 
-    public float Mass;
+    public float Mass = 1;
     private float OtherMass;
+    private float G = 0.67f;
 
     private Vector3 OwnPosition;
     private Vector3 OtherPosition;
+
+    public float[] GravitationelAccelleration;
+
+    public float GravitationelAccellerationX = 0;
+    public float GravitationelAccellerationY = 0;
+    public float GravitationelAccellerationZ = 0;
+
+
     void Start()
     {
-        Change = GetComponent<PositionChange>();
+        //Change = GetComponent<PositionChange>();
         ownGravity = GetComponent<Gravity>();
     }
 
@@ -37,6 +47,8 @@ public class Gravity : MonoBehaviour
                 timer = 0.0f;
                 forceField();
                 OwnPosition = this.transform.position;
+
+                
             }
         }
     // This calculate the force Between two objects, it go through the whole list of objects that it is presented to. 
@@ -55,15 +67,50 @@ public class Gravity : MonoBehaviour
                 Gravity3 = GravityGameObject[counter].GetComponent<Gravity>();
 
                 OtherMass = Gravity3.Mass;
-                OtherPosition = Gravity3.OwnPosition;
+                OtherPosition = Gravity3.transform.position;
 
-                float distance = Vector3.Distance(OwnPosition, OtherPosition); 
+                float distance = Vector3.Distance(OwnPosition, OtherPosition);
 
-                
+                float[] falsevector = new float[3];
 
+                falsevector[0] = OwnPosition.x - OtherPosition.x;
+                falsevector[1] = OwnPosition.y - OtherPosition.y;
+                falsevector[2] = OwnPosition.z - OtherPosition.z;
 
-            }
+                float[] normvector = new float[3];
+
+                normvector[0] = distance - falsevector[0];
+                normvector[1] = distance - falsevector[1];
+                normvector[2] = distance - falsevector[2];
+
+                GravitationelAccelleration = ForceCalculation(normvector, Mass, OtherMass);
+
+                GravitationelAccellerationX = GravitationelAccelleration[0];
+                GravitationelAccellerationY = GravitationelAccelleration[1];
+                GravitationelAccellerationZ = GravitationelAccelleration[2];
+
+            }   
 
         }
+    }
+    private float[] ForceCalculation(float[] normvector,float ownMass, float otherMass) {
+        float mass2 = otherMass * ownMass;
+        float mass3 = mass2 * G;
+
+        float supernormalx = normvector[0] * normvector[0];
+        float supernormaly = normvector[1] * normvector[1];
+        float supernormalz = normvector[2] * normvector[2];
+
+        float forcex = (G * mass2) / supernormalx;
+        float forcey = (G * mass2) / supernormaly;
+        float forcez = (G * mass2) / supernormalz;
+
+        float[] force = new float[3];
+
+        force[0] = forcex;
+        force[1] = forcey;
+        force[2] = forcez;
+
+        return force;
     }
 }
