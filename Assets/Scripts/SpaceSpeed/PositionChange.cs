@@ -16,12 +16,9 @@ public class PositionChange : MonoBehaviour
     private float timer = 10.25f;
     public float waitTime = 0.05f;
     
-    [SerializeField]
-    private float SpeedX = 0;
-    [SerializeField]
-    private float SpeedY = 0;
-    [SerializeField]
-    private float SpeedZ = 0;
+    public float SpeedX = 0;
+    public float SpeedY = 0;
+    public float SpeedZ = 0;
 
     private void Start()
     {

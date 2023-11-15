@@ -22,6 +22,8 @@ public class Acceleration : MonoBehaviour
     }
     void Update()
     {
+        //This send the acceleration to the PositionChange script, so it can flow around in space.
+        //This is also the reciver of everything that have something to do with acceleration. 
         if (ShipController != null) {
             accelerationX = accelerationX + ShipController.ShipAccelerationX;
             accelerationY = accelerationY + ShipController.ShipAccelerationY;
