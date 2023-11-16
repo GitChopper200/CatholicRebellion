@@ -18,7 +18,7 @@ public class Gravity : MonoBehaviour
 
     public float Mass = 1;
     private float OtherMass;
-    private float G = 0.67f;
+    private float G = 6.6743e-11f;
 
     private Vector3 OwnPosition;
     private Vector3 OtherPosition;
@@ -85,10 +85,36 @@ public class Gravity : MonoBehaviour
 
                 GravitationelAccelleration = ForceCalculation(normvector, Mass, OtherMass);
 
-                GravitationelAccellerationX = GravitationelAccelleration[0];
-                GravitationelAccellerationY = GravitationelAccelleration[1];
-                GravitationelAccellerationZ = GravitationelAccelleration[2];
+                bool[] minusCon = new bool[3];
 
+                for (int counter2 = 0; ++counter2 < 3; ++counter2) {
+                    
+
+                    minusCon[0] = true;
+                    minusCon[1] = true;
+                    minusCon[2] = true;
+
+                    if (GravitationelAccelleration[counter2] < 0)
+                    {
+                        minusCon[counter2] = false;
+                    }
+                
+                }
+                GravitationelAccellerationX = Mathf.Sqrt(GravitationelAccelleration[0]);
+                GravitationelAccellerationY = Mathf.Sqrt(GravitationelAccelleration[1]);
+                GravitationelAccellerationZ = Mathf.Sqrt(GravitationelAccelleration[2]);
+
+                if (minusCon[0] == false) {
+                    GravitationelAccellerationX = -GravitationelAccellerationX;
+                }
+                if (minusCon[1] == false)
+                {
+                    GravitationelAccellerationY = -GravitationelAccellerationY;
+                }
+                if (minusCon[0] == false)
+                {
+                    GravitationelAccellerationZ = -GravitationelAccellerationZ;
+                }
             }   
 
         }
