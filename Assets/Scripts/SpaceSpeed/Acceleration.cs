@@ -27,10 +27,15 @@ public class Acceleration : MonoBehaviour
         //This send the acceleration to the PositionChange script, so it can flow around in space.
         //This is also the reciver of everything that have something to do with acceleration. 
         if (ShipController != null) {
-            accelerationX += ShipController.ShipAccelerationX + gravity1.GravitationelAccellerationX;
-            accelerationY += ShipController.ShipAccelerationY + gravity1.GravitationelAccellerationY;
-            accelerationZ += ShipController.ShipAccelerationZ + gravity1.GravitationelAccellerationZ;
+            accelerationX += ShipController.ShipAccelerationX;
+            accelerationY += ShipController.ShipAccelerationY;
+            accelerationZ += ShipController.ShipAccelerationZ;
         }
+        
+        accelerationX += gravity1.GravitationelAccellerationX;
+        accelerationY += gravity1.GravitationelAccellerationY;
+        accelerationZ += gravity1.GravitationelAccellerationZ;
+
         timer += Time.deltaTime;
         if (timer > waitTime)
         {
