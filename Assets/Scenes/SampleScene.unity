@@ -371,7 +371,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  Mass: 0
+  Mass: 0.39
+  GravitationelAccelleration: []
+  GravitationelAccellerationX: 0
+  GravitationelAccellerationY: 0
+  GravitationelAccellerationZ: 0
 --- !u!1 &817947530
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +547,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  Mass: 0
+  Mass: 0.14
+  GravitationelAccelleration: []
+  GravitationelAccellerationX: 0
+  GravitationelAccellerationY: 0
+  GravitationelAccellerationZ: 0
 --- !u!1 &822834083
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,7 +670,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  Mass: 0
+  Mass: 1.05
+  GravitationelAccelleration: []
+  GravitationelAccellerationX: 0
+  GravitationelAccellerationY: 0
+  GravitationelAccellerationZ: 0
 --- !u!114 &906680326
 MonoBehaviour:
   m_ObjectHideFlags: 0
