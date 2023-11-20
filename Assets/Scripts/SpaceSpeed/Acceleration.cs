@@ -16,6 +16,7 @@ public class Acceleration : MonoBehaviour
     private float timer = 1.2f;
     private float waitTime = 1.0f;
 
+    public bool gotTheInformation; 
     private void Start()
     {
         PositionScript = GetComponent<PositionChange>();
@@ -32,10 +33,11 @@ public class Acceleration : MonoBehaviour
             accelerationZ += ShipController.ShipAccelerationZ;
         }
         
-        accelerationX += gravity1.GravitationelAccellerationX;
-        accelerationY += gravity1.GravitationelAccellerationY;
-        accelerationZ += gravity1.GravitationelAccellerationZ;
-
+            accelerationX += gravity1.GravitationelAccellerationFinished[0];
+            accelerationY += gravity1.GravitationelAccellerationFinished[1];
+            accelerationZ += gravity1.GravitationelAccellerationFinished[2];
+            gotTheInformation = true;
+        
         timer += Time.deltaTime;
         if (timer > waitTime)
         {
