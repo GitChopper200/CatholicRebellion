@@ -5,6 +5,8 @@ using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+
+[System.Serializable]
 public class PositionChange : MonoBehaviour
 {
     //This is from The 

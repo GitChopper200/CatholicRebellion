@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
+[System.Serializable]
 public class Gravity : MonoBehaviour
 {
     //private PositionChange Change;
@@ -38,7 +39,7 @@ public class Gravity : MonoBehaviour
         ownGravity = GetComponent<Gravity>();
         accelerationScript = GetComponent<Acceleration>();
 
-        GravitationelAccellerationFinished = new float[4];
+        GravitationelAccellerationFinished = new float[3];
         GraviationelLocalConverter = new float[3];
         GraviationelLocalTransporter = new float[3];
 
@@ -65,10 +66,12 @@ public class Gravity : MonoBehaviour
                 GraviationelLocalTransporter[1] = 0;
                 GraviationelLocalTransporter[2] = 0;
 
-                if (GravityGameObject[counter] != ownGravity)
+                Gravity3 = GravityGameObject[counter].GetComponent<Gravity>();
+
+                if (Gravity3 != ownGravity)
                 {
                    
-                    Gravity3 = GravityGameObject[counter].GetComponent<Gravity>();
+                   
 
                     OtherMass = Gravity3.Mass;
                         
@@ -80,13 +83,19 @@ public class Gravity : MonoBehaviour
                     GraviationelLocalTransporter[0] += GraviationelLocalConverter[0];
                     GraviationelLocalTransporter[1] += GraviationelLocalConverter[1];
                     GraviationelLocalTransporter[2] += GraviationelLocalConverter[2];
+                   
+                    GravitationelAccellerationFinished[0] = GraviationelLocalTransporter[0];
+                    GravitationelAccellerationFinished[1] = GraviationelLocalTransporter[1];
+                    GravitationelAccellerationFinished[2] = GraviationelLocalTransporter[2];
 
                     //Debug.Log(GraviationelLocalTransporter[0]);
                     //Debug.Log(GraviationelLocalConverter + "This Is array");
                 }
-                    GravitationelAccellerationFinished[0] = GraviationelLocalTransporter[0];
-                    GravitationelAccellerationFinished[1] = GraviationelLocalTransporter[1];
-                    GravitationelAccellerationFinished[2] = GraviationelLocalTransporter[2];
+                else
+                {
+                    Debug.LogWarning("No Movement: " + counter);
+                }
+                    
                     
                 timer = 0.0f;
             }
@@ -128,7 +137,6 @@ public class Gravity : MonoBehaviour
         //This calculate the gravitaniol acceleration there is on every axis there is. Return an array 
         private float[] ForceCalculation(float[] normvector, float ownMass, float otherMass) {
             float mass2 = otherMass * ownMass;
-            float mass3 = mass2 * G;
 
             float supernormalx = normvector[0] * normvector[0];
             float supernormaly = normvector[1] * normvector[1];
