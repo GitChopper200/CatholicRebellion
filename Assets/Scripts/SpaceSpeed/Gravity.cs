@@ -38,7 +38,7 @@ public class Gravity : MonoBehaviour
         ownGravity = GetComponent<Gravity>();
         accelerationScript = GetComponent<Acceleration>();
 
-        GravitationelAccellerationFinished = new float[3];
+        GravitationelAccellerationFinished = new float[4];
         GraviationelLocalConverter = new float[3];
         GraviationelLocalTransporter = new float[3];
 
