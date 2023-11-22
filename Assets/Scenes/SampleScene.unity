@@ -255,6 +255,7 @@ MonoBehaviour:
   accelerationX: 0
   accelerationY: 0
   accelerationZ: 0
+  gotTheInformation: 0
 --- !u!65 &741484731
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -373,10 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GravityGameObject: []
   Mass: 0.39
-  GravitationelAccelleration: []
-  GravitationelAccellerationX: 0
-  GravitationelAccellerationY: 0
-  GravitationelAccellerationZ: 0
+  GravitationelAccellerationFinished: []
+  newInformation: 0
 --- !u!96 &741484737
 TrailRenderer:
   serializedVersion: 3
@@ -640,6 +639,7 @@ MonoBehaviour:
   accelerationX: 0
   accelerationY: 0
   accelerationZ: 0
+  gotTheInformation: 0
 --- !u!114 &817947538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,17 +647,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817947530}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efa69b786f983ab44a5ad1f9dc34f7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
   Mass: 0.14
-  GravitationelAccelleration: []
-  GravitationelAccellerationX: 0
-  GravitationelAccellerationY: 0
-  GravitationelAccellerationZ: 0
+  GravitationelAccellerationFinished: []
+  newInformation: 0
 --- !u!96 &817947539
 TrailRenderer:
   serializedVersion: 3
@@ -881,10 +879,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GravityGameObject: []
   Mass: 1.05
-  GravitationelAccelleration: []
-  GravitationelAccellerationX: 0
-  GravitationelAccellerationY: 0
-  GravitationelAccellerationZ: 0
+  GravitationelAccellerationFinished: []
+  newInformation: 0
 --- !u!114 &906680326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,6 +914,7 @@ MonoBehaviour:
   accelerationX: 0
   accelerationY: 0
   accelerationZ: 0
+  gotTheInformation: 0
 --- !u!23 &906680329
 MeshRenderer:
   m_ObjectHideFlags: 0

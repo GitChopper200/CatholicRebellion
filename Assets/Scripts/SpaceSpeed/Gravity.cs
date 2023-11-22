@@ -68,17 +68,15 @@ public class Gravity : MonoBehaviour
 
                 Gravity3 = GravityGameObject[counter].GetComponent<Gravity>();
 
+                OtherMass = Gravity3.Mass;
+
+                OtherPosition = Gravity3.transform.position;
+                OwnPosition = this.transform.position;
+
                 if (Gravity3 != ownGravity)
                 {
-                   
-                   
-
-                    OtherMass = Gravity3.Mass;
-                        
-                    OtherPosition = Gravity3.transform.position;
-                    OwnPosition = this.transform.position;
-
-                    GraviationelLocalConverter = forceField(Mass, OtherMass, OwnPosition, OtherPosition);
+      
+                    GraviationelLocalConverter = FinalAccelerationVector(Mass, OtherMass, OwnPosition, OtherPosition);
 
                     GraviationelLocalTransporter[0] += GraviationelLocalConverter[0];
                     GraviationelLocalTransporter[1] += GraviationelLocalConverter[1];
@@ -93,7 +91,7 @@ public class Gravity : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("No Movement: " + counter);
+                    //Debug.LogWarning("No Movement: " + counter);
                 }
                     
                     
@@ -102,40 +100,38 @@ public class Gravity : MonoBehaviour
         }
     }
         // This calculate the force Between two objects, it go through the whole list of objects that it is presented to. 
-        private float[] forceField(float localMass, float LocalOtherMass, Vector3 OwnPos, Vector3 OtherPos)
+        private float[] FinalAccelerationVector(float localMass, float LocalOtherMass, Vector3 OwnPos, Vector3 OtherPos)
         {
-        //GravityGameObject = Gravity.FindObjectsOfType(typeof(Gravity));
-            float[] returnForce;
-            returnForce = new float[3];
-        
-            float[] forceNumber;
+            
+            float[] unitVector = new float[3];
+            float[] gravitationelHelper = new float[3];
+            float[] gravitionalAcceleration = new float[3];
 
             float distance = Vector3.Distance(OwnPos, OtherPos);
+            Vector3 heading = OwnPos - OtherPos;
+            Vector3 direction = heading / distance;
 
-            Debug.Log(distance);
+            float unitVectorCompiner = heading[0] * heading[0] + heading[1] * heading[1] + heading[2] * heading[2];
+            float unitVectorDivideHelper = (float)Math.Sqrt(unitVectorCompiner);
 
-            float[] falsevector = new float[3];
+            unitVector[0] = heading[0]/unitVectorDivideHelper;
+            unitVector[1] = heading[1]/unitVectorDivideHelper;
+            unitVector[2] = heading[2]/unitVectorDivideHelper;
 
-            falsevector[0] = OwnPos.x - OtherPos.x;
-            falsevector[1] = OwnPos.y - OtherPos.y;
-            falsevector[2] = OwnPos.z - OtherPos.z;
+            gravitationelHelper[0] = (G - LocalOtherMass) / (distance * distance);
+            gravitationelHelper[1] = (G - LocalOtherMass) / (distance * distance);
+            gravitationelHelper[2] = (G - LocalOtherMass) / (distance * distance);
 
-            float[] normvector = new float[3];
 
-            normvector[0] = distance - falsevector[0];
-            normvector[1] = distance - falsevector[1];
-            normvector[2] = distance - falsevector[2];
 
-            forceNumber = ForceCalculation(normvector, localMass, LocalOtherMass);
-
-            returnForce[0] = Mathf.Sqrt(forceNumber[0]);
-            returnForce[1] = Mathf.Sqrt(forceNumber[1]);
-            returnForce[2] = Mathf.Sqrt(forceNumber[2]);
-
-            return returnForce;
+            gravitionalAcceleration[0] = (gravitationelHelper[0] * unitVector[0]);
+            gravitionalAcceleration[1] = (gravitationelHelper[1] * unitVector[1]);
+            gravitionalAcceleration[2] = (gravitationelHelper[2] * unitVector[2]);
+            
+            return gravitionalAcceleration;
         }
         //This calculate the gravitaniol acceleration there is on every axis there is. Return an array 
-        private float[] ForceCalculation(float[] normvector, float ownMass, float otherMass) {
+        private float[] VectorAcceleration(float[] normvector, float ownMass, float otherMass) {
             float mass2 = otherMass * ownMass;
 
             float supernormalx = normvector[0] * normvector[0];
