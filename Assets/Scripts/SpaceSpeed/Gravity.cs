@@ -117,13 +117,11 @@ public class Gravity : MonoBehaviour
             unitVector[0] = heading[0]/unitVectorDivideHelper;
             unitVector[1] = heading[1]/unitVectorDivideHelper;
             unitVector[2] = heading[2]/unitVectorDivideHelper;
-
+            
             gravitationelHelper[0] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[1] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[2] = (G - LocalOtherMass) / (distance * distance);
-
-
-
+            //Here is the final Gravitationel Acceleration, if you times this with the local mass of its own, you get the force 
             gravitionalAcceleration[0] = (gravitationelHelper[0] * unitVector[0]);
             gravitionalAcceleration[1] = (gravitationelHelper[1] * unitVector[1]);
             gravitionalAcceleration[2] = (gravitationelHelper[2] * unitVector[2]);

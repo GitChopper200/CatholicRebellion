@@ -35,7 +35,6 @@ public class PositionChange : MonoBehaviour
         if (waitTime < timer)
         {
 
-
             Vector3 positionOwn = this.transform.position;
 
             //Here is the reference to the script so that the acceleration is been taken in the script. And the change of position and speed is taken in here. Q

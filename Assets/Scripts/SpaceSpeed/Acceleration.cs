@@ -5,8 +5,6 @@ using UnityEngine;
 [System.Serializable] 
 public class Acceleration : MonoBehaviour
 {
-
-    private PositionChange PositionScript;
     private ShipController ShipController;
     private Gravity gravity1;
 
@@ -21,7 +19,6 @@ public class Acceleration : MonoBehaviour
     public bool gotTheInformation; 
     private void Start()
     {
-        PositionScript = GetComponent<PositionChange>();
         ShipController = GetComponent<ShipController>();
         gravity1 = GetComponent<Gravity>();
     }
