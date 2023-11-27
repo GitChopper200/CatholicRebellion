@@ -16,7 +16,7 @@ public class Acceleration : MonoBehaviour
     public float falseAccelerationY = 0.0f;
     public float falseAccelerationZ = 0.0f;
 
-    public bool gotTheInformation; 
+    public bool CalculateOn = true; 
     private void Start()
     {
         ShipController = GetComponent<ShipController>();
@@ -26,18 +26,21 @@ public class Acceleration : MonoBehaviour
     {
         //This send the acceleration to the PositionChange script, so it can flow around in space.
         //This is also the reciver of everything that have something to do with acceleration. 
-        if (ShipController != null)
+        if (CalculateOn == true)
         {
-            accelerationX = ShipController.ShipAccelerationX + gravity1.GravitationelAccellerationFinished[0];
-            accelerationY = ShipController.ShipAccelerationY + gravity1.GravitationelAccellerationFinished[1];
-            accelerationZ = ShipController.ShipAccelerationZ + gravity1.GravitationelAccellerationFinished[2];
-        }
-        else 
-        {
-            accelerationX = gravity1.GravitationelAccellerationFinished[0];
-            accelerationY = gravity1.GravitationelAccellerationFinished[1];
-            accelerationZ = gravity1.GravitationelAccellerationFinished[2];
+            if (ShipController != null)
+            {
+                accelerationX = ShipController.ShipAccelerationX + gravity1.GravitationelAccellerationFinished[0];
+                accelerationY = ShipController.ShipAccelerationY + gravity1.GravitationelAccellerationFinished[1];
+                accelerationZ = ShipController.ShipAccelerationZ + gravity1.GravitationelAccellerationFinished[2];
+            }
+            else
+            {
+                accelerationX = gravity1.GravitationelAccellerationFinished[0];
+                accelerationY = gravity1.GravitationelAccellerationFinished[1];
+                accelerationZ = gravity1.GravitationelAccellerationFinished[2];
 
+            }
         }
         
     }
