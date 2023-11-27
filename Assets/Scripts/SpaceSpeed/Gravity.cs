@@ -60,7 +60,7 @@ public class Gravity : MonoBehaviour
             GravityGameObject = GameObject.FindGameObjectsWithTag("Gravity");
             
            // This is the part where everything gets to put into arrays and send to The AccelerationScript
-            for (int counter = 0; counter < GravityGameObject.Length; counter++)
+            for (int counter = 0; counter <= GravityGameObject.Length; counter++)
             {
                 GraviationelLocalTransporter[0] = 0;
                 GraviationelLocalTransporter[1] = 0;
@@ -99,25 +99,29 @@ public class Gravity : MonoBehaviour
             }
         }
     }
-        // This calculate the force Between two objects, it go through the whole list of objects that it is presented to. 
-        private float[] FinalAccelerationVector(float localMass, float LocalOtherMass, Vector3 OwnPos, Vector3 OtherPos)
+    // This calculate the force Between two objects, it go through the whole list of objects that it is presented to. 
+    private float[] FinalAccelerationVector(float localMass, float LocalOtherMass, Vector3 OwnPos, Vector3 OtherPos)
+    {
+
+        float[] unitVector = new float[3];
+        float[] gravitationelHelper = new float[3];
+        float[] gravitionalAcceleration = new float[3];
+
+
+        float distance = Vector3.Distance(OwnPos, OtherPos);
+        Vector3 heading = OwnPos - OtherPos;
+        Vector3 direction = heading / distance;
+
+        float unitVectorCompiner = heading[0] * heading[0] + heading[1] * heading[1] + heading[2] * heading[2];
+        float unitVectorDivideHelper = (float)Math.Sqrt(unitVectorCompiner);
+
+        unitVector[0] = heading[0] / unitVectorDivideHelper;
+        unitVector[1] = heading[1] / unitVectorDivideHelper;
+        unitVector[2] = heading[2] / unitVectorDivideHelper;
+
+        if (distance > 5)
         {
-            
-            float[] unitVector = new float[3];
-            float[] gravitationelHelper = new float[3];
-            float[] gravitionalAcceleration = new float[3];
-
-            float distance = Vector3.Distance(OwnPos, OtherPos);
-            Vector3 heading = OwnPos - OtherPos;
-            Vector3 direction = heading / distance;
-
-            float unitVectorCompiner = heading[0] * heading[0] + heading[1] * heading[1] + heading[2] * heading[2];
-            float unitVectorDivideHelper = (float)Math.Sqrt(unitVectorCompiner);
-
-            unitVector[0] = heading[0]/unitVectorDivideHelper;
-            unitVector[1] = heading[1]/unitVectorDivideHelper;
-            unitVector[2] = heading[2]/unitVectorDivideHelper;
-            
+            Debug.Log(distance);
             gravitationelHelper[0] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[1] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[2] = (G - LocalOtherMass) / (distance * distance);
@@ -125,9 +129,15 @@ public class Gravity : MonoBehaviour
             gravitionalAcceleration[0] = (gravitationelHelper[0] * unitVector[0]);
             gravitionalAcceleration[1] = (gravitationelHelper[1] * unitVector[1]);
             gravitionalAcceleration[2] = (gravitationelHelper[2] * unitVector[2]);
-            
+
             return gravitionalAcceleration;
         }
+        else
+        {
+            float[] zeroArray = new float[3];
+            return zeroArray;
+        }
+    }
         //This calculate the gravitaniol acceleration there is on every axis there is. Return an array 
         private float[] VectorAcceleration(float[] normvector, float ownMass, float otherMass) {
             float mass2 = otherMass * ownMass;
