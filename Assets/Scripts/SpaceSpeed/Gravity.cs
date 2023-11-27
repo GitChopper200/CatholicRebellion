@@ -118,10 +118,10 @@ public class Gravity : MonoBehaviour
         unitVector[0] = heading[0] / unitVectorDivideHelper;
         unitVector[1] = heading[1] / unitVectorDivideHelper;
         unitVector[2] = heading[2] / unitVectorDivideHelper;
-
+        //Look at this if statement later on, it doenst work as it should or other solution will come.
         if (distance > 5)
         {
-            Debug.Log(distance);
+            //Debug.Log(distance);
             gravitationelHelper[0] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[1] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[2] = (G - LocalOtherMass) / (distance * distance);
