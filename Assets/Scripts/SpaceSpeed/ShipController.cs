@@ -14,6 +14,7 @@ public class ShipController : MonoBehaviour
     public float ShipAccelerationZ;
 
     private Quaternion rotationQuaternion;
+    private float roationX;
 
     private float timer = 10.25f;
     private float waitTime = 1.0f;
@@ -24,6 +25,9 @@ public class ShipController : MonoBehaviour
         PositionChange = GetComponent<PositionChange>();
         rotation = GetComponent<Transform>();
 
+        rotationQuaternion = transform.rotation;
+        roationX = 90 + rotationQuaternion.eulerAngles.x;
+        Debug.LogWarning(roationX);
         //waitTime = PositionChange.waitTime;
     }
     void Update()
@@ -32,6 +36,8 @@ public class ShipController : MonoBehaviour
 
         Debug.Log(rotationQuaternion.y + "y");
         Debug.Log(rotationQuaternion.z + "z");
+
+
 
         if (Input.GetKey(KeyCode.X))
         {
