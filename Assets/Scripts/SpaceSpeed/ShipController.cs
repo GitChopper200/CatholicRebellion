@@ -17,59 +17,96 @@ public class ShipController : MonoBehaviour
     private float roationX;
 
     private float timer = 10.25f;
-    private float waitTime = 1.0f;
+    private float waitTime = 0.125f;
 
-    private float powerFromBack = 0.000001f;
+    private float powerFromBack = 0.0001f;
+
+    private float pushFromX;
+    private float pushFromZ;
     private void Start()
     {
         PositionChange = GetComponent<PositionChange>();
         rotation = GetComponent<Transform>();
 
         rotationQuaternion = transform.rotation;
+       
         roationX = 90 + rotationQuaternion.eulerAngles.x;
-        Debug.LogWarning(roationX);
+        
+        //Debug.LogWarning(roationX);
+
+
         //waitTime = PositionChange.waitTime;
     }
     void Update()
     {
-        rotationQuaternion = transform.rotation;
+        
+        
 
-        Debug.Log(rotationQuaternion.y + "y");
-        Debug.Log(rotationQuaternion.z + "z");
+        
+        /*timer += Time.deltaTime;
+        if (timer > waitTime)*/
+        {
+            rotationQuaternion = transform.rotation;
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                this.transform.rotation = Change(-90f, 0, rotationQuaternion.eulerAngles.z + 1.0f);
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                this.transform.rotation = Change(-90f, 0, rotationQuaternion.eulerAngles.z - 1.0f);
+            }
+            if (Input.GetKey(KeyCode.F))
+            {
+                ShipAccelerationY = pushFromX * powerFromBack;
+                ShipAccelerationZ = pushFromZ * powerFromBack;
+            }
+           
+
+            //Debug.Log(rotationQuaternion.eulerAngles.y + "y");
+            //Debug.Log(rotationQuaternion.eulerAngles.z + "z");
+            if (rotationQuaternion.eulerAngles.y >= 0 && rotationQuaternion.eulerAngles.y <= 180)
+            { 
+                pushFromX = -0.011111111111f * rotationQuaternion.eulerAngles.y + 1.0f;
+                if (rotationQuaternion.eulerAngles.y >= 90)
+                {
+                    pushFromZ = 1 + pushFromX;
+                }
+                else
+                {
+                    pushFromZ = 1 - pushFromX;
+                }
+            
+            }
+            if(rotationQuaternion.eulerAngles.y > 180)
+            {
+                pushFromX = 0.011111111111f * rotationQuaternion.eulerAngles.y - 3.0f;
+                if (rotationQuaternion.eulerAngles.y >= 270)
+                {
+                    pushFromZ = 1 - pushFromX;
+                }
+                else
+                {
+                    pushFromZ = 1 + pushFromX;
+                }
+            }
+            Debug.Log(pushFromX + "pushX");
+            Debug.Log(pushFromZ + "pushZ");
 
 
+            //ShipAccelerationX = 0;
+            //ShipAccelerationY = 0;
+            //ShipAccelerationZ = 0;
 
-        if (Input.GetKey(KeyCode.X))
-        {
-            ShipAccelerationZ = ShipAccelerationZ + powerFromBack;
+            //timer = 0;
         }
-        if (Input.GetKey(KeyCode.Z)) {
-            ShipAccelerationZ = ShipAccelerationZ - powerFromBack;
-        }
-        if(Input.GetKey(KeyCode.UpArrow))
-        {
-            ShipAccelerationY = ShipAccelerationY + powerFromBack;
-        }
-        if( Input.GetKey(KeyCode.DownArrow))
-        {
-            ShipAccelerationY = ShipAccelerationY - powerFromBack;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            ShipAccelerationX = ShipAccelerationX + powerFromBack;
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            ShipAccelerationX = ShipAccelerationX - powerFromBack;
-        }
-        timer += Time.deltaTime;
-        if (timer > waitTime)
-        {
-            ShipAccelerationX = 0;
-            ShipAccelerationY = 0;
-            ShipAccelerationZ = 0;
 
-            timer = 0;
-        }
+       
+    }
+    private static Quaternion Change(float x, float y, float z)
+    {
+        Quaternion newQuaternion = new Quaternion();
+        newQuaternion.Set(x, y, z, 1);
+        //Return the new Quaternion
+        return newQuaternion;
     }
 }

@@ -119,8 +119,7 @@ public class Gravity : MonoBehaviour
         unitVector[1] = heading[1] / unitVectorDivideHelper;
         unitVector[2] = heading[2] / unitVectorDivideHelper;
         //Look at this if statement later on, it doenst work as it should or other solution will come.
-        if (distance > 5)
-        {
+        
             //Debug.Log(distance);
             gravitationelHelper[0] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[1] = (G - LocalOtherMass) / (distance * distance);
@@ -131,12 +130,6 @@ public class Gravity : MonoBehaviour
             gravitionalAcceleration[2] = (gravitationelHelper[2] * unitVector[2]);
 
             return gravitionalAcceleration;
-        }
-        else
-        {
-            float[] zeroArray = new float[3];
-            return zeroArray;
-        }
     }
         //This calculate the gravitaniol acceleration there is on every axis there is. Return an array 
         private float[] VectorAcceleration(float[] normvector, float ownMass, float otherMass) {
