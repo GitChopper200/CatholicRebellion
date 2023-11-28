@@ -60,7 +60,7 @@ public class Gravity : MonoBehaviour
             GravityGameObject = GameObject.FindGameObjectsWithTag("Gravity");
             
            // This is the part where everything gets to put into arrays and send to The AccelerationScript
-            for (int counter = 0; counter < GravityGameObject.Length; counter++)
+            for (int counter = 0; counter <= GravityGameObject.Length; counter++)
             {
                 GraviationelLocalTransporter[0] = 0;
                 GraviationelLocalTransporter[1] = 0;
