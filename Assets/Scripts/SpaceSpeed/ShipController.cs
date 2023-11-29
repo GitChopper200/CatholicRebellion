@@ -7,14 +7,14 @@ using UnityEngine.UIElements;
 public class ShipController : MonoBehaviour
 {
     private PositionChange PositionChange;
-    private Transform rotation;
+    private Transform thisRoatation;
 
     public float ShipAccelerationX;
     public float ShipAccelerationY;
     public float ShipAccelerationZ;
 
     private Quaternion rotationQuaternion;
-    private float roationX;
+    private Vector3 roatation;
 
     private float timer = 10.25f;
     private float waitTime = 0.125f;
@@ -26,11 +26,8 @@ public class ShipController : MonoBehaviour
     private void Start()
     {
         PositionChange = GetComponent<PositionChange>();
-        rotation = GetComponent<Transform>();
+        thisRoatation = GetComponent<Transform>();
 
-        rotationQuaternion = transform.rotation;
-       
-        roationX = 90 + rotationQuaternion.eulerAngles.x;
         
         //Debug.LogWarning(roationX);
 
@@ -43,25 +40,25 @@ public class ShipController : MonoBehaviour
         
 
         
-        /*timer += Time.deltaTime;
-        if (timer > waitTime)*/
-        {
+        timer += Time.deltaTime;
+        if (timer > waitTime)
+        
             rotationQuaternion = transform.rotation;
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKey(KeyCode.L))
             {
-                this.transform.rotation = Change(-90f, 0, rotationQuaternion.eulerAngles.z + 1.0f);
+                Vector3 rotationToAdd = new Vector3(0, 0, 0.1f);
+                transform.Rotate(rotationToAdd);
             }
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetKey(KeyCode.K))
             {
-                this.transform.rotation = Change(-90f, 0, rotationQuaternion.eulerAngles.z - 1.0f);
+                Vector3 rotationToAdd = new Vector3(0, 0, -0.1f);
+                transform.Rotate(rotationToAdd);
             }
             if (Input.GetKey(KeyCode.F))
             {
-                ShipAccelerationY = pushFromX * powerFromBack;
-                ShipAccelerationZ = pushFromZ * powerFromBack;
+                ShipAccelerationX = pushFromX * -powerFromBack;
+                ShipAccelerationZ = pushFromZ * -powerFromBack;
             }
-           
-
             //Debug.Log(rotationQuaternion.eulerAngles.y + "y");
             //Debug.Log(rotationQuaternion.eulerAngles.z + "z");
             if (rotationQuaternion.eulerAngles.y >= 0 && rotationQuaternion.eulerAngles.y <= 180)
@@ -89,8 +86,8 @@ public class ShipController : MonoBehaviour
                     pushFromZ = 1 + pushFromX;
                 }
             }
-            Debug.Log(pushFromX + "pushX");
-            Debug.Log(pushFromZ + "pushZ");
+            //Debug.Log(pushFromX + "pushX");
+            //Debug.Log(pushFromZ + "pushZ");
 
 
             //ShipAccelerationX = 0;
@@ -98,7 +95,7 @@ public class ShipController : MonoBehaviour
             //ShipAccelerationZ = 0;
 
             //timer = 0;
-        }
+        
 
        
     }

@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-[System.Serializable]
 public class Gravity : MonoBehaviour
 {
     //private PositionChange Change;
@@ -60,7 +59,7 @@ public class Gravity : MonoBehaviour
             GravityGameObject = GameObject.FindGameObjectsWithTag("Gravity");
             
            // This is the part where everything gets to put into arrays and send to The AccelerationScript
-            for (int counter = 0; counter <= GravityGameObject.Length; counter++)
+            for (int counter = 0; counter < GravityGameObject.Length; counter++)
             {
                 GraviationelLocalTransporter[0] = 0;
                 GraviationelLocalTransporter[1] = 0;
@@ -73,6 +72,8 @@ public class Gravity : MonoBehaviour
                 OtherPosition = Gravity3.transform.position;
                 OwnPosition = this.transform.position;
 
+                //Debug.Log(Gravity3);
+                //Debug.LogWarning(ownGravity);
                 if (Gravity3 != ownGravity)
                 {
       
@@ -87,11 +88,7 @@ public class Gravity : MonoBehaviour
                     GravitationelAccellerationFinished[2] = GraviationelLocalTransporter[2];
 
                     //Debug.Log(GraviationelLocalTransporter[0]);
-                    //Debug.Log(GraviationelLocalConverter + "This Is array");
-                }
-                else
-                {
-                    //Debug.LogWarning("No Movement: " + counter);
+                    Debug.Log(GraviationelLocalConverter + "This Is array");
                 }
                     
                     
@@ -119,8 +116,10 @@ public class Gravity : MonoBehaviour
         unitVector[1] = heading[1] / unitVectorDivideHelper;
         unitVector[2] = heading[2] / unitVectorDivideHelper;
         //Look at this if statement later on, it doenst work as it should or other solution will come.
-        
-            //Debug.Log(distance);
+
+        //Debug.Log(distance);
+        if (distance != 0)
+        {
             gravitationelHelper[0] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[1] = (G - LocalOtherMass) / (distance * distance);
             gravitationelHelper[2] = (G - LocalOtherMass) / (distance * distance);
@@ -130,6 +129,11 @@ public class Gravity : MonoBehaviour
             gravitionalAcceleration[2] = (gravitationelHelper[2] * unitVector[2]);
 
             return gravitionalAcceleration;
+        }else
+        {
+            float[] zeroArray = new float[3];
+            return zeroArray;
+        }
     }
         //This calculate the gravitaniol acceleration there is on every axis there is. Return an array 
         private float[] VectorAcceleration(float[] normvector, float ownMass, float otherMass) {
