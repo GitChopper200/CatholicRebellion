@@ -72,8 +72,7 @@ public class Gravity : MonoBehaviour
                 OtherPosition = Gravity3.transform.position;
                 OwnPosition = this.transform.position;
 
-                //Debug.Log(Gravity3);
-                //Debug.LogWarning(ownGravity);
+                //Debug.LogWarning(counter);
                 if (Gravity3 != ownGravity)
                 {
       
@@ -87,8 +86,8 @@ public class Gravity : MonoBehaviour
                     GravitationelAccellerationFinished[1] = GraviationelLocalTransporter[1];
                     GravitationelAccellerationFinished[2] = GraviationelLocalTransporter[2];
 
-                    //Debug.Log(GraviationelLocalTransporter[0]);
-                    Debug.Log(GraviationelLocalConverter + "This Is array");
+                    Debug.Log(GraviationelLocalConverter[0] + "" + "Converter" + " " + counter);
+                    //Debug.Log(GraviationelLocalConverter[0] + "This Is array");
                 }
                     
                     
@@ -104,8 +103,9 @@ public class Gravity : MonoBehaviour
         float[] gravitationelHelper = new float[3];
         float[] gravitionalAcceleration = new float[3];
 
-
+        // this is the unitvector look it up on the internet for information. Then it should make sense 
         float distance = Vector3.Distance(OwnPos, OtherPos);
+        //her er synderen 
         Vector3 heading = OwnPos - OtherPos;
         Vector3 direction = heading / distance;
 
@@ -116,7 +116,8 @@ public class Gravity : MonoBehaviour
         unitVector[1] = heading[1] / unitVectorDivideHelper;
         unitVector[2] = heading[2] / unitVectorDivideHelper;
         //Look at this if statement later on, it doenst work as it should or other solution will come.
-
+        Debug.LogWarning(heading[0]);
+        Debug.LogWarning(heading[1] + "War");
         //Debug.Log(distance);
         if (distance != 0)
         {
@@ -127,6 +128,8 @@ public class Gravity : MonoBehaviour
             gravitionalAcceleration[0] = (gravitationelHelper[0] * unitVector[0]);
             gravitionalAcceleration[1] = (gravitationelHelper[1] * unitVector[1]);
             gravitionalAcceleration[2] = (gravitationelHelper[2] * unitVector[2]);
+
+          
 
             return gravitionalAcceleration;
         }else

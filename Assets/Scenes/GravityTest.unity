@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  Mass: 8
+  Mass: 0
   GravitationelAccellerationFinished: []
   newInformation: 0
 --- !u!114 &598152950
@@ -370,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 598152947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: -15}
+  m_LocalPosition: {x: 15, y: 2, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  Mass: 1
+  Mass: 0
   GravitationelAccellerationFinished: []
   newInformation: 0
 --- !u!114 &678614866
@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  Mass: 1
+  Mass: 0
   GravitationelAccellerationFinished: []
   newInformation: 0
 --- !u!114 &2120990118

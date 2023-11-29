@@ -14,8 +14,8 @@ public class ShipController : MonoBehaviour
 
     private Quaternion rotationQuaternion;
 
-    private float timer = 10.25f;
-    private float waitTime = 0.125f;
+    /*private float timer = 10.25f;
+    private float waitTime = 0.125f;*/
 
     private float powerFromBack = 0.0001f;
 
