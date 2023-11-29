@@ -7,14 +7,12 @@ using UnityEngine.UIElements;
 public class ShipController : MonoBehaviour
 {
     private PositionChange PositionChange;
-    private Transform thisRoatation;
 
     public float ShipAccelerationX;
     public float ShipAccelerationY;
     public float ShipAccelerationZ;
 
     private Quaternion rotationQuaternion;
-    private Vector3 roatation;
 
     private float timer = 10.25f;
     private float waitTime = 0.125f;
@@ -26,24 +24,11 @@ public class ShipController : MonoBehaviour
     private void Start()
     {
         PositionChange = GetComponent<PositionChange>();
-        thisRoatation = GetComponent<Transform>();
 
-        
-        //Debug.LogWarning(roationX);
-
-
-        //waitTime = PositionChange.waitTime;
     }
     void Update()
     {
-        
-        
-
-        
-        timer += Time.deltaTime;
-        if (timer > waitTime)
-        
-            rotationQuaternion = transform.rotation;
+        rotationQuaternion = this.transform.rotation;
             if (Input.GetKey(KeyCode.L))
             {
                 Vector3 rotationToAdd = new Vector3(0, 0, 0.1f);
@@ -58,6 +43,10 @@ public class ShipController : MonoBehaviour
             {
                 ShipAccelerationX = pushFromX * -powerFromBack;
                 ShipAccelerationZ = pushFromZ * -powerFromBack;
+            }else
+            {
+                ShipAccelerationX = 0;
+                ShipAccelerationZ = 0;
             }
             //Debug.Log(rotationQuaternion.eulerAngles.y + "y");
             //Debug.Log(rotationQuaternion.eulerAngles.z + "z");
@@ -94,7 +83,7 @@ public class ShipController : MonoBehaviour
             //ShipAccelerationY = 0;
             //ShipAccelerationZ = 0;
 
-            //timer = 0;
+           
         
 
        
