@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[System.Serializable]
 public class ShipController : MonoBehaviour
 {
     private PositionChange PositionChange;

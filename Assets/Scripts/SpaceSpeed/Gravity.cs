@@ -17,7 +17,7 @@ public class Gravity : MonoBehaviour
     private float timer = 10.25f;
     private float waitTime = 1.0f;
 
-    public float Mass = 1;
+    public float MassKiloGram = 1;
     private float OtherMass;
     private float G = 6.6743e-11f;
 
@@ -34,6 +34,7 @@ public class Gravity : MonoBehaviour
 
     void Start()
     {
+        MassKiloGram = MassKiloGram * 1000;
         //Change = GetComponent<PositionChange>();
         ownGravity = GetComponent<Gravity>();
         accelerationScript = GetComponent<Acceleration>();
@@ -67,7 +68,7 @@ public class Gravity : MonoBehaviour
 
                 Gravity3 = GravityGameObject[counter].GetComponent<Gravity>();
 
-                OtherMass = Gravity3.Mass;
+                OtherMass = Gravity3.MassKiloGram;
 
                 OtherPosition = Gravity3.transform.position;
                 OwnPosition = this.transform.position;
@@ -76,17 +77,17 @@ public class Gravity : MonoBehaviour
                 if (Gravity3 != ownGravity)
                 {
       
-                    GraviationelLocalConverter = FinalAccelerationVector(Mass, OtherMass, OwnPosition, OtherPosition);
+                    GraviationelLocalConverter = FinalAccelerationVector(MassKiloGram, OtherMass, OwnPosition, OtherPosition);
 
                     GraviationelLocalTransporter[0] += GraviationelLocalConverter[0];
                     GraviationelLocalTransporter[1] += GraviationelLocalConverter[1];
                     GraviationelLocalTransporter[2] += GraviationelLocalConverter[2];
                    
-                    GravitationelAccellerationFinished[0] = GraviationelLocalTransporter[0];
-                    GravitationelAccellerationFinished[1] = GraviationelLocalTransporter[1];
-                    GravitationelAccellerationFinished[2] = GraviationelLocalTransporter[2];
+                    GravitationelAccellerationFinished[0] += GraviationelLocalTransporter[0];
+                    GravitationelAccellerationFinished[1] += GraviationelLocalTransporter[1];
+                    GravitationelAccellerationFinished[2] += GraviationelLocalTransporter[2];
 
-                    Debug.Log(GraviationelLocalConverter[0] + "" + "Converter" + " " + counter);
+                    //Debug.Log(GraviationelLocalConverter[0] + "" + "Converter" + " " + counter);
                     //Debug.Log(GraviationelLocalConverter[0] + "This Is array");
                 }
                     
@@ -107,6 +108,9 @@ public class Gravity : MonoBehaviour
         float distance = Vector3.Distance(OwnPos, OtherPos);
         //her er synderen 
         Vector3 heading = OwnPos - OtherPos;
+        /*Debug.LogWarning(heading[0]);
+        Debug.LogWarning(heading[1] + "War");
+        Debug.LogWarning(heading[2] + "War2");*/
         Vector3 direction = heading / distance;
 
         float unitVectorCompiner = heading[0] * heading[0] + heading[1] * heading[1] + heading[2] * heading[2];
@@ -116,14 +120,14 @@ public class Gravity : MonoBehaviour
         unitVector[1] = heading[1] / unitVectorDivideHelper;
         unitVector[2] = heading[2] / unitVectorDivideHelper;
         //Look at this if statement later on, it doenst work as it should or other solution will come.
-        Debug.LogWarning(heading[0]);
-        Debug.LogWarning(heading[1] + "War");
+        
         //Debug.Log(distance);
         if (distance != 0)
         {
-            gravitationelHelper[0] = (G - LocalOtherMass) / (distance * distance);
-            gravitationelHelper[1] = (G - LocalOtherMass) / (distance * distance);
-            gravitationelHelper[2] = (G - LocalOtherMass) / (distance * distance);
+            //Should look like this. gravitationelHelper[0] = -G * (LocalOtherMass) / (distance * distance);
+            gravitationelHelper[0] = -G * (LocalOtherMass) / (distance * distance);
+            gravitationelHelper[1] = -G * (LocalOtherMass) / (distance * distance);
+            gravitationelHelper[2] = -G * (LocalOtherMass) / (distance * distance);
             //Here is the final Gravitationel Acceleration, if you times this with the local mass of its own, you get the force 
             gravitionalAcceleration[0] = (gravitationelHelper[0] * unitVector[0]);
             gravitionalAcceleration[1] = (gravitationelHelper[1] * unitVector[1]);
