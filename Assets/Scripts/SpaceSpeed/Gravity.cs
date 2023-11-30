@@ -30,6 +30,7 @@ public class Gravity : MonoBehaviour
     private float[] GraviationelLocalTransporter;
 
     public bool newInformation;
+    private bool newInformation2;
 
 
     void Start()
@@ -54,7 +55,7 @@ public class Gravity : MonoBehaviour
     {
 
         timer += Time.deltaTime;
-        if (timer > waitTime)
+        if (timer > waitTime && accelerationScript != null)
         {
             //Debug.Log("a");
             GravityGameObject = GameObject.FindGameObjectsWithTag("Gravity");
@@ -87,10 +88,20 @@ public class Gravity : MonoBehaviour
                     GravitationelAccellerationFinished[1] += GraviationelLocalTransporter[1];
                     GravitationelAccellerationFinished[2] += GraviationelLocalTransporter[2];
 
+                    newInformation = true;
                     //Debug.Log(GraviationelLocalConverter[0] + "" + "Converter" + " " + counter);
                     //Debug.Log(GraviationelLocalConverter[0] + "This Is array");
                 }
                 timer = 0.0f;
+            }
+            if (accelerationScript.CalculateOn == true && accelerationScript != null) {
+                GravitationelAccellerationFinished[0] = 0;
+                GravitationelAccellerationFinished[1] = 0;
+                GravitationelAccellerationFinished[2] = 0;
+
+                newInformation = false;
+
+                // Get the information line to work, so it sets to 0 every time 
             }
         }
     }
