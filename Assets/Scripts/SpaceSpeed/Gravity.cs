@@ -119,7 +119,6 @@ public class Gravity : MonoBehaviour
         unitVector[0] = heading[0] / unitVectorDivideHelper;
         unitVector[1] = heading[1] / unitVectorDivideHelper;
         unitVector[2] = heading[2] / unitVectorDivideHelper;
-        //Look at this if statement later on, it doenst work as it should or other solution will come.
         
         //Debug.Log(distance);
         if (distance != 0)
