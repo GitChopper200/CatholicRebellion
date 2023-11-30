@@ -16,7 +16,7 @@ public class ShipController : MonoBehaviour
     /*private float timer = 10.25f;
     private float waitTime = 0.125f;*/
 
-    private float powerFromBack = 0.0001f;
+    private float powerFromBack = 0.001f;
 
     private float pushFromX;
     private float pushFromZ;
@@ -69,10 +69,10 @@ public class ShipController : MonoBehaviour
                 }
             
             }
-            if(rotationQuaternion.eulerAngles.y > 180)
+            if(rotationQuaternion.eulerAngles.y < 0)
             {
                 pushFromX = 0.011111111111f * rotationQuaternion.eulerAngles.y - 3.0f;
-                if (rotationQuaternion.eulerAngles.y >= 270)
+                if (rotationQuaternion.eulerAngles.y <= -90)
                 {
                     pushFromZ = 1 - pushFromX;
                 }
@@ -80,25 +80,6 @@ public class ShipController : MonoBehaviour
                 {
                     pushFromZ = 1 + pushFromX;
                 }
-            }
-            //Debug.Log(pushFromX + "pushX");
-            //Debug.Log(pushFromZ + "pushZ");
-
-
-            //ShipAccelerationX = 0;
-            //ShipAccelerationY = 0;
-            //ShipAccelerationZ = 0;
-
-           
-        
-
-       
-    }
-    private static Quaternion Change(float x, float y, float z)
-    {
-        Quaternion newQuaternion = new Quaternion();
-        newQuaternion.Set(x, y, z, 1);
-        //Return the new Quaternion
-        return newQuaternion;
+            }  
     }
 }

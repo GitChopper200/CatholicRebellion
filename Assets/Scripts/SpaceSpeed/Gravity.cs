@@ -90,8 +90,6 @@ public class Gravity : MonoBehaviour
                     //Debug.Log(GraviationelLocalConverter[0] + "" + "Converter" + " " + counter);
                     //Debug.Log(GraviationelLocalConverter[0] + "This Is array");
                 }
-                    
-                    
                 timer = 0.0f;
             }
         }
