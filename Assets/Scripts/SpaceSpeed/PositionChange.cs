@@ -16,7 +16,7 @@ public class PositionChange : MonoBehaviour
 
     public int mass = 0;
     private float timer = 10.25f;
-    public float waitTime = 0.05f;
+    public float waitTime = 0.125f;
     
     public float SpeedX = 0;
     public float SpeedY = 0;
@@ -41,6 +41,7 @@ public class PositionChange : MonoBehaviour
             SpeedX = AccelerationScript.AccelerationFunction(SpeedX, AccelerationScript.accelerationX);
             SpeedY = AccelerationScript.AccelerationFunction(SpeedY, AccelerationScript.accelerationY);
             SpeedZ = AccelerationScript.AccelerationFunction(SpeedZ, AccelerationScript.accelerationZ);
+
             this.transform.position = PositionsChange(SpeedX, SpeedY, SpeedZ, positionOwn);
             timer = 0;
         }

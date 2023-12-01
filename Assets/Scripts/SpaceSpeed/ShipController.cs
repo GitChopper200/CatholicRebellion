@@ -50,13 +50,18 @@ public class ShipController : MonoBehaviour
             if (Input.GetKey(KeyCode.Z)) {
                 ShipAccelerationY =+ powerFromBack;
             }
-            if(Input.GetKey(KeyCode.X)) { 
+            else if (Input.GetKey(KeyCode.X)) { 
                 ShipAccelerationY =- powerFromBack;
             }
+            else
+            {
+                ShipAccelerationY = 0;
+            }
+            
 
-            //Debug.Log(rotationQuaternion.eulerAngles.y + "y");
-            //Debug.Log(rotationQuaternion.eulerAngles.z + "z");
-            if (rotationQuaternion.eulerAngles.y >= 0 && rotationQuaternion.eulerAngles.y <= 180)
+        //Debug.Log(rotationQuaternion.eulerAngles.y + "y");
+        //Debug.Log(rotationQuaternion.eulerAngles.z + "z");
+        if (rotationQuaternion.eulerAngles.y >= 0 && rotationQuaternion.eulerAngles.y <= 180)
             { 
                 pushFromX = -0.011111111111f * rotationQuaternion.eulerAngles.y + 1.0f;
                 if (rotationQuaternion.eulerAngles.y >= 90)
