@@ -18,8 +18,9 @@ public class ShipController : MonoBehaviour
 
     private float powerFromBack = 0.001f;
 
-    private float pushFromX;
-    private float pushFromZ;
+    private float[] push;
+
+   
     private void Start()
     {
         PositionChange = GetComponent<PositionChange>();
@@ -28,75 +29,68 @@ public class ShipController : MonoBehaviour
     void Update()
     {
         rotationQuaternion = this.transform.rotation;
-            if (Input.GetKey(KeyCode.L))
-            {
-                Vector3 rotationToAdd = new Vector3(0, 0, 0.1f);
-                transform.Rotate(rotationToAdd);
-            }
-            if (Input.GetKey(KeyCode.K))
-            {
-                Vector3 rotationToAdd = new Vector3(0, 0, -0.1f);
-                transform.Rotate(rotationToAdd);
-            }
-            if (Input.GetKey(KeyCode.F))
-            {
-                ShipAccelerationX = pushFromX * -powerFromBack;
-                ShipAccelerationZ = pushFromZ * -powerFromBack;
-            }else
-            {
-                ShipAccelerationX = 0;
-                ShipAccelerationZ = 0;
-            }
-            if (Input.GetKey(KeyCode.Z)) {
-                ShipAccelerationY =+ powerFromBack;
-            }
-            else if (Input.GetKey(KeyCode.X)) { 
-                ShipAccelerationY =- powerFromBack;
-            }
-            else
-            {
-                ShipAccelerationY = 0;
-            }
-            
+        if (Input.GetKey(KeyCode.L))
+        {
+            Vector3 rotationToAdd = new Vector3(0, 0, 0.1f);
+            transform.Rotate(rotationToAdd);
+        }
+        if (Input.GetKey(KeyCode.K))
+        {
+            Vector3 rotationToAdd = new Vector3(0, 0, -0.1f);
+            transform.Rotate(rotationToAdd);
+        }
+        if (Input.GetKey(KeyCode.F))
+        {
+            push = RotationSplit(rotationQuaternion.eulerAngles.y);
+            ShipAccelerationX = push[0] * -powerFromBack;
+            ShipAccelerationZ = push[1] * -powerFromBack;
+        }
+        else
+        {
+            ShipAccelerationX = 0;
+            ShipAccelerationZ = 0;
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            ShipAccelerationY = +powerFromBack;
+        }
+        else if (Input.GetKey(KeyCode.X))
+        {
+            ShipAccelerationY = -powerFromBack;
+        }
+        else
+        {
+            ShipAccelerationY = 0;
+        }
+
 
         //Debug.Log(rotationQuaternion.eulerAngles.y + "y");
         //Debug.Log(rotationQuaternion.eulerAngles.z + "z");
-        if (rotationQuaternion.eulerAngles.y >= 0 && rotationQuaternion.eulerAngles.y <= 180)
-            { 
-                pushFromX = -0.011111111111f * rotationQuaternion.eulerAngles.y + 1.0f;
-                if (rotationQuaternion.eulerAngles.y >= 90)
-                {
-                    pushFromZ = 1 + pushFromX;
-                }
-                else
-                {
-                    pushFromZ = 1 - pushFromX;
-            }
+
+    }
+    private float[] RotationSplit(float Roation)
+    {
+        float[] pushFrom = new float[2];
+        if (Roation >= 0 && Roation <= 90)
+        {
+            pushFrom[0] = 0.011111111111f * Roation + 1;
+            pushFrom[1] = 1 - pushFrom[0];
+        }
+        if ((Roation > 90 && Roation <= 180))
+        {
+            pushFrom[0] = -0.011111111111f * Roation;
+            pushFrom[1] = pushFrom[0] - 1;
+        }
+        if (Roation > 180 && Roation <= 270) {
+            pushFrom[0] = -0.011111111111f * Roation - 1;
+            pushFrom[1] = pushFrom[0] + 1;
 
         }
-        if (rotationQuaternion.eulerAngles.y < 0)
-        {
-            pushFromX = 0.011111111111f * rotationQuaternion.eulerAngles.y - 3.0f;
-            if (rotationQuaternion.eulerAngles.y <= -90)
-            {
-                pushFromZ = 1 - pushFromX;
-            }
-            else
-            {
-                pushFromZ = 1 + pushFromX;
-            }
+        if (Roation > 270 && Roation <= 360) {
+            pushFrom[0] = 0.011111111111f * Roation;
+            pushFrom[1] = pushFrom[0] - 1;
         }
-        if (rotationQuaternion.eulerAngles.y > 180)
-        {
-            pushFromX = 0.011111111111f * rotationQuaternion.eulerAngles.y - 3.0f;
-            if (rotationQuaternion.eulerAngles.y >= 270)
-            {
-                pushFromZ = 1 - pushFromX;
-            }
-            else
-            {
-                pushFromZ = 1 + pushFromX;
-            }
-        }
+        return pushFrom;
+
     }
 }
