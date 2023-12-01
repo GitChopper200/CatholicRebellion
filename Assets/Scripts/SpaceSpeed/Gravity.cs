@@ -59,14 +59,12 @@ public class Gravity : MonoBehaviour
         {
             //Debug.Log("a");
             GravityGameObject = GameObject.FindGameObjectsWithTag("Gravity");
-            
-           // This is the part where everything gets to put into arrays and send to The AccelerationScript
+            GraviationelLocalTransporter[0] = 0;
+            GraviationelLocalTransporter[1] = 0;
+            GraviationelLocalTransporter[2] = 0;
+            // This is the part where everything gets to put into arrays and send to The AccelerationScript
             for (int counter = 0; counter < GravityGameObject.Length; counter++)
             {
-                GraviationelLocalTransporter[0] = 0;
-                GraviationelLocalTransporter[1] = 0;
-                GraviationelLocalTransporter[2] = 0;
-
                 Gravity3 = GravityGameObject[counter].GetComponent<Gravity>();
 
                 OtherMass = Gravity3.MassKiloGram;
@@ -84,9 +82,9 @@ public class Gravity : MonoBehaviour
                     GraviationelLocalTransporter[1] += GraviationelLocalConverter[1];
                     GraviationelLocalTransporter[2] += GraviationelLocalConverter[2];
                    
-                    GravitationelAccellerationFinished[0] += GraviationelLocalTransporter[0];
-                    GravitationelAccellerationFinished[1] += GraviationelLocalTransporter[1];
-                    GravitationelAccellerationFinished[2] += GraviationelLocalTransporter[2];
+                    GravitationelAccellerationFinished[0] = GraviationelLocalTransporter[0];
+                    GravitationelAccellerationFinished[1] = GraviationelLocalTransporter[1];
+                    GravitationelAccellerationFinished[2] = GraviationelLocalTransporter[2];
 
                     newInformation = true;
                     //Debug.Log(GraviationelLocalConverter[0] + "" + "Converter" + " " + counter);
@@ -94,7 +92,7 @@ public class Gravity : MonoBehaviour
                 }
                 timer = 0.0f;
             }
-            if (accelerationScript.CalculateOn == true && accelerationScript != null) {
+            /*if (accelerationScript.CalculateOn == true && accelerationScript != null) {
                 GravitationelAccellerationFinished[0] = 0;
                 GravitationelAccellerationFinished[1] = 0;
                 GravitationelAccellerationFinished[2] = 0;
@@ -102,7 +100,7 @@ public class Gravity : MonoBehaviour
                 newInformation = false;
 
                 // Get the information line to work, so it sets to 0 every time 
-            }
+            }*/
         }
     }
     // This calculate the force Between two objects, it go through the whole list of objects that it is presented to. 
