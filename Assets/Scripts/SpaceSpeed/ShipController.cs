@@ -48,10 +48,10 @@ public class ShipController : MonoBehaviour
                 ShipAccelerationZ = 0;
             }
             if (Input.GetKey(KeyCode.Z)) {
-                ShipAccelerationZ =+ powerFromBack;
+                ShipAccelerationY =+ powerFromBack;
             }
             if(Input.GetKey(KeyCode.X)) { 
-                ShipAccelerationZ =- powerFromBack;
+                ShipAccelerationY =- powerFromBack;
             }
 
             //Debug.Log(rotationQuaternion.eulerAngles.y + "y");
