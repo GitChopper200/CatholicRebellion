@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 95a1b2d829ae93b45a696280088df3e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -500
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 95a1b2d829ae93b45a696280088df3e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  MassKiloGram: 100000000
+  MassKiloGram: 0
   GravitationelAccellerationFinished: []
   newInformation: 0
 --- !u!135 &1996147915
