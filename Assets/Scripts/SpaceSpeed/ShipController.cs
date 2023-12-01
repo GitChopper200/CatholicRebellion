@@ -66,20 +66,32 @@ public class ShipController : MonoBehaviour
                 else
                 {
                     pushFromZ = 1 - pushFromX;
-                }
-            
             }
-            if(rotationQuaternion.eulerAngles.y < 0)
+
+        }
+        if (rotationQuaternion.eulerAngles.y < 0)
+        {
+            pushFromX = 0.011111111111f * rotationQuaternion.eulerAngles.y - 3.0f;
+            if (rotationQuaternion.eulerAngles.y <= -90)
             {
-                pushFromX = 0.011111111111f * rotationQuaternion.eulerAngles.y - 3.0f;
-                if (rotationQuaternion.eulerAngles.y <= -90)
-                {
-                    pushFromZ = 1 - pushFromX;
-                }
-                else
-                {
-                    pushFromZ = 1 + pushFromX;
-                }
-            }  
+                pushFromZ = 1 - pushFromX;
+            }
+            else
+            {
+                pushFromZ = 1 + pushFromX;
+            }
+        }
+        if (rotationQuaternion.eulerAngles.y > 180)
+        {
+            pushFromX = 0.011111111111f * rotationQuaternion.eulerAngles.y - 3.0f;
+            if (rotationQuaternion.eulerAngles.y >= 270)
+            {
+                pushFromZ = 1 - pushFromX;
+            }
+            else
+            {
+                pushFromZ = 1 + pushFromX;
+            }
+        }
     }
 }
