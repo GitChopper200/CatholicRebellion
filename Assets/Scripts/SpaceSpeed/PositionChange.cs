@@ -13,6 +13,7 @@ public class PositionChange : MonoBehaviour
     public GameObject anotherCircel;
 
     private Acceleration AccelerationScript;
+    private ColiderLaw ColiderScript;
 
     public int mass = 0;
     private float timer = 10.25f;
@@ -25,6 +26,7 @@ public class PositionChange : MonoBehaviour
     private void Start()
     {
         AccelerationScript = GetComponent<Acceleration>();
+        ColiderScript = GetComponent<ColiderLaw>();
     }
 
     void Update()
@@ -34,6 +36,7 @@ public class PositionChange : MonoBehaviour
         timer += Time.deltaTime;
         if (waitTime < timer)
         {
+            
 
             Vector3 positionOwn = this.transform.position;
 
