@@ -71,22 +71,23 @@ public class ShipController : MonoBehaviour
     private float[] RotationSplit(float Roation)
     {
         float[] pushFrom = new float[2];
-        if (Roation >= 0 && Roation <= 90)
+        if (Roation >= 0 && Roation <= 90 || Roation < -270 && Roation >= -360)
         {
             pushFrom[0] = 0.011111111111f * Roation + 1;
             pushFrom[1] = 1 - pushFrom[0];
         }
-        if ((Roation > 90 && Roation <= 180))
+        if (Roation > 90 && Roation <= 180 || Roation < -180 && Roation >= -270)
         {
             pushFrom[0] = -0.011111111111f * Roation;
             pushFrom[1] = pushFrom[0] - 1;
         }
-        if (Roation > 180 && Roation <= 270) {
+        if (Roation > 180 && Roation <= 270 || Roation < -90 && Roation >= -180) {
             pushFrom[0] = -0.011111111111f * Roation - 1;
-            pushFrom[1] = pushFrom[0] + 1;
+            pushFrom[1] = 1 - pushFrom[0];
 
         }
-        if (Roation > 270 && Roation <= 360) {
+        if (Roation > 270 && Roation <= 360 || Roation < 0 && Roation >= -90) 
+        {
             pushFrom[0] = 0.011111111111f * Roation;
             pushFrom[1] = pushFrom[0] - 1;
         }
