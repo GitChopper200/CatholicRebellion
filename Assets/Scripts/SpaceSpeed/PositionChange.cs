@@ -14,6 +14,7 @@ public class PositionChange : MonoBehaviour
 
     private Acceleration AccelerationScript;
     private ColiderLaw ColiderScript;
+    private Health HealthScript;
 
     public int mass = 0;
     private float timer = 10.25f;
@@ -36,8 +37,7 @@ public class PositionChange : MonoBehaviour
         timer += Time.deltaTime;
         if (waitTime < timer)
         {
-            
-
+           
             Vector3 positionOwn = this.transform.position;
 
             //Here is the reference to the script so that the acceleration is been taken in the script. And the change of position and speed is taken in here. Q
@@ -46,6 +46,32 @@ public class PositionChange : MonoBehaviour
             SpeedZ = AccelerationScript.AccelerationFunction(SpeedZ, AccelerationScript.accelerationZ);
 
             this.transform.position = PositionsChange(SpeedX, SpeedY, SpeedZ, positionOwn);
+
+            Collider[] Koldt = ColiderScript.GetCollisions();
+                foreach (Collider collider in Koldt)
+                {
+                    PositionChange positionChange = collider.GetComponent<PositionChange>();
+                    Gravity gravity = collider.GetComponent<Gravity>();
+                    Debug.Log("INSIDE");
+                    
+                    SpeedX = SpeedX * -1;
+                    SpeedY = SpeedY * -1;
+                    SpeedZ = SpeedZ * -1;
+
+                if (positionChange != null)
+                    {
+                        HealthScript = GetComponent<Health>();
+                        if (gravity != null)
+                        {
+                            HealthScript.BodyHealth = HealthScript.BodyHit(HealthScript.BodyHealth, SpeedX, SpeedY, SpeedZ, positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ, gravity.MassKiloGram);
+                        }
+                        SpeedX = SpeedX * -1;
+                        SpeedY = SpeedY * -1;
+                        SpeedZ = SpeedZ * -1;
+                    }
+
+                
+            }
             timer = 0;
         }
 
