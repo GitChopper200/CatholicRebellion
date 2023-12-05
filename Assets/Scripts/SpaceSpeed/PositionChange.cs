@@ -15,6 +15,7 @@ public class PositionChange : MonoBehaviour
     private Acceleration AccelerationScript;
     private ColiderLaw ColiderScript;
     private Health HealthScript;
+    private PositionChange OwnPositionChange;
 
     public int mass = 0;
     private float timer = 10.25f;
@@ -28,6 +29,7 @@ public class PositionChange : MonoBehaviour
     {
         AccelerationScript = GetComponent<Acceleration>();
         ColiderScript = GetComponent<ColiderLaw>();
+        OwnPositionChange = GetComponent<PositionChange>();
     }
 
     void Update()
@@ -51,12 +53,13 @@ public class PositionChange : MonoBehaviour
                 foreach (Collider collider in Koldt)
                 {
                     PositionChange positionChange = collider.GetComponent<PositionChange>();
+                if (positionChange != OwnPositionChange)
+                {
                     Gravity gravity = collider.GetComponent<Gravity>();
-                    Debug.Log("INSIDE");
-                    
-                    
 
-                if (positionChange != null)
+                    Debug.Log("INSIDE");
+
+                    if (positionChange != null)
                     {
                         HealthScript = GetComponent<Health>();
                         if (gravity != null)
@@ -66,15 +69,15 @@ public class PositionChange : MonoBehaviour
                         SpeedX = SpeedX * -1;
                         SpeedY = SpeedY * -1;
                         SpeedZ = SpeedZ * -1;
-                }
-                else
-                {
-                    SpeedX = SpeedX * -1;
-                    SpeedY = SpeedY * -1;
-                    SpeedZ = SpeedZ * -1;
+                    }
+                    else
+                    {
+                        SpeedX = SpeedX * -1;
+                        SpeedY = SpeedY * -1;
+                        SpeedZ = SpeedZ * -1;
 
+                    }
                 }
-
                 
             }
             timer = 0;

@@ -18,6 +18,15 @@ public class Health : MonoBehaviour
         Debug.Log(TotalSpeedTotal);
         TotalSpeedTotal = Mathf.Abs(TotalSpeedTotal);
         health = health - TotalSpeedTotal;
+        CheckHealth();
         return health;
+    }
+    void CheckHealth() { 
+        Player player = GetComponent<Player>();
+        if(player != null)
+        {
+            player.endGame();
+
+        }
     }
 }
