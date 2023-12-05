@@ -54,9 +54,7 @@ public class PositionChange : MonoBehaviour
                     Gravity gravity = collider.GetComponent<Gravity>();
                     Debug.Log("INSIDE");
                     
-                    SpeedX = SpeedX * -1;
-                    SpeedY = SpeedY * -1;
-                    SpeedZ = SpeedZ * -1;
+                    
 
                 if (positionChange != null)
                     {
@@ -68,7 +66,14 @@ public class PositionChange : MonoBehaviour
                         SpeedX = SpeedX * -1;
                         SpeedY = SpeedY * -1;
                         SpeedZ = SpeedZ * -1;
-                    }
+                }
+                else
+                {
+                    SpeedX = SpeedX * -1;
+                    SpeedY = SpeedY * -1;
+                    SpeedZ = SpeedZ * -1;
+
+                }
 
                 
             }
