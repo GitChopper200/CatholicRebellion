@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,8 +38,10 @@ public class RadarRaycast : MonoBehaviour
             Debug.Log("RadarHit"+hit.transform.name);
         }
         Debug.DrawLine(transform.position,transform.position+transform.forward*maxRayDistance);
+    
+   
     }
-    void FadeOut()
+        void FadeOut()
     {
         Renderer renderer = GetComponent<Renderer>();
 
@@ -47,6 +50,7 @@ public class RadarRaycast : MonoBehaviour
             StartCoroutine(FadeOutCoroutine(renderer));
         }
     }
+
     IEnumerator FadeOutCoroutine(Renderer renderer)
     {
         float alpha = 1f;
