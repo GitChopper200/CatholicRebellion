@@ -48,10 +48,13 @@ public class Player : MonoBehaviour
     public float[] SetToZero(float SpeedX, float SpeedY, float SpeedZ)
     {
         float[] acceleration = new float[3];
+        bool[] closeToZero = new bool[3];
+        float threshold = 0.1f;
 
             if (SpeedX < 0)
             {
             acceleration[0] += powerFromBack;
+                
             }
             else if (SpeedX > 0)
             {
@@ -73,6 +76,34 @@ public class Player : MonoBehaviour
             {
             acceleration[2] -= powerFromBack;
             }
+
+            if (Mathf.Abs(SpeedX) < threshold) {
+            closeToZero[0] = true;
+            Debug.Log("speedX");
+            }
+            if (Mathf.Abs(SpeedY) < threshold )
+            {
+            Debug.Log("speedY");
+            closeToZero[1] = true;
+            }
+            if (Mathf.Abs(SpeedZ) < threshold )
+            {
+            Debug.Log("speedZ");
+            closeToZero[2] = true;
+            }
+        if (closeToZero[0] == true && closeToZero[1] == true && closeToZero[2] == true)
+        {
+            positionChange.SpeedX = 0;
+            positionChange.SpeedY = 0;
+            positionChange.SpeedZ = 0;
+            
+            AccelerationPlayer[0] = 0;
+            AccelerationPlayer[1] = 0;
+            AccelerationPlayer[2] = 0;
+            
+            GetComponent<PositionChange>().enabled = false;
+            ActivateAcceleration = false;
+        }
         Debug.Log(acceleration[0] + "" + acceleration[1] + "" + acceleration[2]);
         return acceleration;
     }
