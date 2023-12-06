@@ -984,7 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a448889212d8342a690f455781f2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRayDistance: 40
+  maxRayDistance: 100
   radarPingSprite: {fileID: 2801030735007990838, guid: 59acc911fdb0fa24e9234343d5910079, type: 3}
   fadeDelay: 2
   fadeDuration: 1
@@ -1564,7 +1564,7 @@ Camera:
   far clip plane: 500
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 40
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
