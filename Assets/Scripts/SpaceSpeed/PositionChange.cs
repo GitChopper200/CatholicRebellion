@@ -48,7 +48,7 @@ public class PositionChange : MonoBehaviour
             SpeedZ = AccelerationScript.AccelerationFunction(SpeedZ, AccelerationScript.accelerationZ);
 
             this.transform.position = PositionsChange(SpeedX, SpeedY, SpeedZ, positionOwn);
-
+            //Check if collider 
             Collider[] Koldt = ColiderScript.GetCollisions();
                 foreach (Collider collider in Koldt)
                 {
@@ -66,6 +66,7 @@ public class PositionChange : MonoBehaviour
                         {
                             HealthScript.BodyHealth = HealthScript.BodyHit(HealthScript.BodyHealth, SpeedX, SpeedY, SpeedZ, positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ, gravity.MassKiloGram);
                         }
+                        // Need to change this for moment so that function with the mass and things like that.  
                         SpeedX = SpeedX * -1;
                         SpeedY = SpeedY * -1;
                         SpeedZ = SpeedZ * -1;

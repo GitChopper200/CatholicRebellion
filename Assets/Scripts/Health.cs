@@ -13,23 +13,27 @@ public class Health : MonoBehaviour
 
         float TotalSpeed = SpeedX + SpeedY + SpeedZ;
         float TotalOtherSpeed = OtherSpeedX + OtherSpeedY + OtherSpeedZ;
-        
-        float TotalSpeedTotal = (TotalOtherSpeed + TotalSpeed) * otherMass;
-        Debug.Log(TotalSpeedTotal);
+
+        float TotalSpeedX = SpeedX + OtherSpeedX;
+        float TotalSpeedY = SpeedY + OtherSpeedY;
+        float TotalSpeedZ = OtherSpeedZ + OtherSpeedZ;
+
+        float TotalSpeedTotal = (TotalSpeedX + TotalSpeedY + TotalSpeedZ) * otherMass;
+
         TotalSpeedTotal = Mathf.Abs(TotalSpeedTotal);
-        health = health - TotalSpeedTotal;
+        health = health - TotalSpeedTotal * 0.01f;
         CheckHealth(health);
+        Debug.Log(health);
         return health;
     }
     private void CheckHealth(float Health) {
         if (Health < 0)
         {
             Player player = GetComponent<Player>();
-
+            Debug.Log("DEATH");
             if (player != null)
             {
                 player.endGame();
-
             }
         }
     }

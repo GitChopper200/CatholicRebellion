@@ -44,7 +44,12 @@ public class ShipController : MonoBehaviour
             push = RotationSplit(rotationQuaternion.eulerAngles.y);
             ShipAccelerationX = push[0] * -powerFromBack;
             ShipAccelerationZ = push[1] * -powerFromBack;
+        }else if(Input.GetKey(KeyCode.R)){
+            push = RotationSplit(rotationQuaternion.eulerAngles.y);
+            ShipAccelerationX = push[0] * powerFromBack;
+            ShipAccelerationZ = push[1] * powerFromBack;
         }
+
         else
         {
             ShipAccelerationX = 0;
