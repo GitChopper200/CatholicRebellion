@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class ShipController : MonoBehaviour
 {
     private PositionChange PositionChange;
+    private Player Player1;
 
     public float ShipAccelerationX;
     public float ShipAccelerationY;
@@ -24,6 +25,7 @@ public class ShipController : MonoBehaviour
     private void Start()
     {
         PositionChange = GetComponent<PositionChange>();
+        Player1 = GetComponent<Player>();
 
     }
     void Update()
@@ -44,7 +46,8 @@ public class ShipController : MonoBehaviour
             push = RotationSplit(rotationQuaternion.eulerAngles.y);
             ShipAccelerationX = push[0] * -powerFromBack;
             ShipAccelerationZ = push[1] * -powerFromBack;
-        }else if(Input.GetKey(KeyCode.R)){
+        }else if(Input.GetKey(KeyCode.R))
+        {
             push = RotationSplit(rotationQuaternion.eulerAngles.y);
             ShipAccelerationX = push[0] * powerFromBack;
             ShipAccelerationZ = push[1] * powerFromBack;
@@ -66,6 +69,10 @@ public class ShipController : MonoBehaviour
         else
         {
             ShipAccelerationY = 0;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha0)) {
+            Player1.ActivateAcceleration = true;
         }
 
 
