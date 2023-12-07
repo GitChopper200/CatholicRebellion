@@ -25,6 +25,8 @@ public class PositionChange : MonoBehaviour
     public float SpeedY = 0;
     public float SpeedZ = 0;
 
+    public Vector3 positionOwn;
+
     private void Start()
     {
         AccelerationScript = GetComponent<Acceleration>();
@@ -40,7 +42,7 @@ public class PositionChange : MonoBehaviour
         if (waitTime < timer)
         {
            
-            Vector3 positionOwn = this.transform.position;
+            positionOwn = this.transform.position;
 
             //Here is the reference to the script so that the acceleration is been taken in the script. And the change of position and speed is taken in here. Q
             SpeedX = AccelerationScript.AccelerationFunction(SpeedX, AccelerationScript.accelerationX);

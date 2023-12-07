@@ -13,24 +13,32 @@ public class Player : MonoBehaviour
     public float[] AccelerationPlayer;
     
     private PositionChange positionChange;
+    
 
     private float timer = 10.25f;
     private float timer2 = 10.25f;
     public float waitTime = 1.0f;
     private float smallWaitTime = 0.125f;
 
+    private float[] speedText;
+    private int speedTimer = 10;
+    private float[] TransformText;
+
     [SerializeField]
     private TMP_Text SpeedScore;
-    public void endGame() {
-
+    [SerializeField]
+    private TMP_Text TransformPosition;
+    public void endGame() 
+    {
         Application.Quit();
-
     }
     void Start()
     {
-     positionChange = GetComponent<PositionChange>();
-        
+    positionChange = GetComponent<PositionChange>();
+
     AccelerationPlayer = new float[3];
+    speedText = new float[3];
+    TransformText = new float[3];
 
     AccelerationPlayer[0] = 0;
     AccelerationPlayer[1] = 0;
@@ -52,7 +60,17 @@ public class Player : MonoBehaviour
         timer2 += Time.deltaTime;
         if (smallWaitTime < timer2)
         {
-            SpeedScore.text = "SpeedX" + positionChange.SpeedX.ToString("0.00") + "\r\n" + "SpeedY" + positionChange.SpeedY.ToString("0.00") + "\r\n" + "SpeedZ" + positionChange.SpeedZ.ToString("0.00");
+            speedText[0] = positionChange.SpeedX * speedTimer;
+            speedText[1] = positionChange.SpeedY * speedTimer;
+            speedText[2] = positionChange.SpeedZ * speedTimer;
+            SpeedScore.text = "SpeedX" + speedText[0].ToString("0.00") + "\r\n" + "SpeedY" + speedText[1].ToString("0.00") + "\r\n" + "SpeedZ" + speedText[2].ToString("0.00");
+
+            TransformText[0] = positionChange.positionOwn[0];
+            TransformText[1] = positionChange.positionOwn[1];
+            TransformText[2] = positionChange.positionOwn[2];
+
+            TransformPosition.text = "x" + positionChange.positionOwn[0].ToString("0.0") + "\r\n" + "y" + positionChange.positionOwn[1].ToString("0.0") + "\r\n" + "z" + positionChange.positionOwn[2].ToString("0.0");
+
             timer2 = 0;
         }
     }

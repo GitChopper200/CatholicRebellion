@@ -75,9 +75,15 @@ public class ShipController : MonoBehaviour
             Player1.ActivateAcceleration = true;
         }
 
-        if(Input.anyKey)
+        if(Input.anyKey && Input.GetKey(KeyCode.Alpha0) != true)
         {
             GetComponent<PositionChange>().enabled = true;
+            Player1.ActivateAcceleration = false;
+
+            Player1.AccelerationPlayer[0] = 0;
+            Player1.AccelerationPlayer[1] = 0;
+            Player1.AccelerationPlayer[2] = 0;
+
         }
 
         //Debug.Log(rotationQuaternion.eulerAngles.y + "y");
