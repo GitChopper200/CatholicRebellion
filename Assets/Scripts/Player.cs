@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -13,12 +15,15 @@ public class Player : MonoBehaviour
     private PositionChange positionChange;
 
     private float timer = 10.25f;
+    private float timer2 = 10.25f;
     public float waitTime = 1.0f;
+    private float smallWaitTime = 0.125f;
+
+    [SerializeField]
+    private TMP_Text SpeedScore;
     public void endGame() {
 
         Application.Quit();
-
-        
 
     }
     void Start()
@@ -40,10 +45,16 @@ public class Player : MonoBehaviour
             {
                 AccelerationPlayer = SetToZero(positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ);
             }
+            
 
             timer = 0;
         }
-
+        timer2 += Time.deltaTime;
+        if (smallWaitTime < timer2)
+        {
+            SpeedScore.text = "SpeedX" + positionChange.SpeedX.ToString("0.00") + "\r\n" + "SpeedY" + positionChange.SpeedY.ToString("0.00") + "\r\n" + "SpeedZ" + positionChange.SpeedZ.ToString("0.00");
+            timer2 = 0;
+        }
     }
     public float[] SetToZero(float SpeedX, float SpeedY, float SpeedZ)
     {
