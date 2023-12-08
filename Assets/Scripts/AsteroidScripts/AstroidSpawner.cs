@@ -50,15 +50,26 @@ public class AstroidSpawner : MonoBehaviour
 
     void SpawnAsteroid()
     {
+        float randomAngle = Random.Range(0f, 360f);
+        float angleInRadians = Mathf.Deg2Rad * randomAngle;
+
+        Vector3 spawnPosition = new Vector3(transform.position.x + randomAngle * Mathf.Cos(angleInRadians),
+                                            transform.position.y + randomAngle, 
+                                            transform.position.z + randomAngle * Mathf.Cos(angleInRadians)
+        );
+                                            
+      
+
+
+
+
         Debug.Log("njsdgghjdfs");
-        GameObject spawnedObject = Instantiate(spawnPrefab, transform.position, Quaternion.identity);
+        GameObject spawnedObject = Instantiate(spawnPrefab, spawnPosition, Quaternion.identity);
+        
         PositionChange positionChange = GetComponent<PositionChange>();
         
         Vector3 directionToPlayer = (transform.position-spawnedObject.transform.position).normalized;
 
-        positionChange.SpeedX += directionToPlayer[0] * speed;
-        positionChange.SpeedY += directionToPlayer[1] * speed;
-        positionChange.SpeedZ += directionToPlayer[2] * speed;
 
     }
 
