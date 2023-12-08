@@ -62,6 +62,7 @@ public class PositionChange : MonoBehaviour
                     Gravity gravity = collider.GetComponent<Gravity>();
 
                     Debug.Log("INSIDE");
+                   
 
                     HealthScript = GetComponent<Health>();
                     GameObject gameObjectChecker = collider.gameObject;

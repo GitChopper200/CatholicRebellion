@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 1670091198}
   - component: {fileID: 1670091197}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WIn
   m_TagString: Win
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.3750374
+  m_Intensity: 11.875036
   m_Range: 1000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -708,7 +708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -716,7 +716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalRotation.w

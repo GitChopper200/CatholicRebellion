@@ -37,11 +37,12 @@ public class Player : MonoBehaviour
     private TMP_Text Rotation;
     public void endGame() 
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
     public void WinGame()
     {
         Debug.Log("Win");
+        SceneManager.LoadScene(0);
     }
     void Start()
     {
@@ -57,7 +58,8 @@ public class Player : MonoBehaviour
     AccelerationPlayer[1] = 0;
     AccelerationPlayer[2] = 0;
 
-    GameObject[] win = GameObject.FindGameObjectsWithTag("Win");
+    GameObject win = GameObject.FindWithTag("Win");
+        WinTransform = win.transform.position;
     }
     void Update()
     {
