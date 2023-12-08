@@ -60,14 +60,15 @@ public class PositionChange : MonoBehaviour
                     Gravity gravity = collider.GetComponent<Gravity>();
 
                     Debug.Log("INSIDE");
-
-                    if (positionChange != null)
+                
+                    HealthScript = GetComponent<Health>();
+                    GameObject gameObjectChecker = GetComponent<GameObject>();
+                if (gravity != null)
+                {
+                    HealthScript.BodyHealth = HealthScript.BodyHit(HealthScript.BodyHealth, SpeedX, SpeedY, SpeedZ, positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ, gravity.MassKiloGram);
+                }
+                    if (gameObjectChecker.tag != "Win") 
                     {
-                        HealthScript = GetComponent<Health>();
-                        if (gravity != null)
-                        {
-                            HealthScript.BodyHealth = HealthScript.BodyHit(HealthScript.BodyHealth, SpeedX, SpeedY, SpeedZ, positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ, gravity.MassKiloGram);
-                        }
                         // Need to change this for moment so that function with the mass and things like that.  
                         SpeedX = SpeedX * -1;
                         SpeedY = SpeedY * -1;
@@ -75,10 +76,12 @@ public class PositionChange : MonoBehaviour
                     }
                     else
                     {
-                        SpeedX = SpeedX * -1;
-                        SpeedY = SpeedY * -1;
-                        SpeedZ = SpeedZ * -1;
-
+                        WinScript winScript = collider.GetComponent<WinScript>();
+                        Player player1 = GetComponent<Player>();
+                        if (player1 != null)
+                        {
+                            winScript.WinFunction();
+                        }
                     }
                 }
                 

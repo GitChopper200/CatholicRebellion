@@ -384,6 +384,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4343953120412810894, guid: 75bf1d910996a0349b84ff6cb92147d6, type: 3}
+      propertyPath: MassKiloGram
+      value: 1e+9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -458,6 +462,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6415142716638169409, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+      propertyPath: maxRayDistance
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 7177227171181849228, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_Name
       value: SpacecraftPlayer
@@ -501,6 +509,10 @@ PrefabInstance:
     - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126468858703065518, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+      propertyPath: orthographic size
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

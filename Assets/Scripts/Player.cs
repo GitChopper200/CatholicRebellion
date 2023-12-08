@@ -53,7 +53,6 @@ public class Player : MonoBehaviour
             {
                 AccelerationPlayer = SetToZero(positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ);
             }
-            
 
             timer = 0;
         }
