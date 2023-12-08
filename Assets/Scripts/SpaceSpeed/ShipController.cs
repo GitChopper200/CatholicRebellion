@@ -92,7 +92,7 @@ public class ShipController : MonoBehaviour
         //Debug.Log(rotationQuaternion.eulerAngles.z + "z");
 
     }
-    private float[] RotationSplit(float Roation)
+    public float[] RotationSplit(float Roation)
     {
         float[] pushFrom = new float[2];
         if (Roation >= 0 && Roation <= 90 || Roation < -270 && Roation >= -360)

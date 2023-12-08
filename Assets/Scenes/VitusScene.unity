@@ -123,6 +123,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &99684482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7177227171181849228, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+  m_PrefabInstance: {fileID: 334085429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &99684493
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99684482}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.036247645
+  m_Height: 0.02785673
+  m_Direction: 1
+  m_Center: {x: -0.0032109432, y: 0.00030862735, z: 0.00018611042}
 --- !u!1001 &334085429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,6 +178,18 @@ PrefabInstance:
     - target: {fileID: 7177227171181849228, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_Name
       value: SpacecraftPlayer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7552944190852902966, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -194,7 +234,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7177227171181849228, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 99684493}
   m_SourcePrefab: {fileID: 100100000, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
 --- !u!1 &840664060
 GameObject:
