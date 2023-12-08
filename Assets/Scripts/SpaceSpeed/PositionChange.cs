@@ -75,12 +75,11 @@ public class PositionChange : MonoBehaviour
                         SpeedZ = SpeedZ * -1;
                     }
                     else
-                    {
-                        WinScript winScript = collider.GetComponent<WinScript>();
+                    { 
                         Player player1 = GetComponent<Player>();
                         if (player1 != null)
                         {
-                            winScript.WinFunction();
+                            player1.WinGame();
                         }
                     }
                 }

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public float[] AccelerationPlayer;
     
     private PositionChange positionChange;
-    
+    private ShipController shipController;
 
     private float timer = 10.25f;
     private float timer2 = 10.25f;
@@ -24,17 +24,28 @@ public class Player : MonoBehaviour
     private int speedTimer = 10;
     private float[] TransformText;
 
+    private Vector3 WinTransform;
+
     [SerializeField]
     private TMP_Text SpeedScore;
     [SerializeField]
     private TMP_Text TransformPosition;
+    [SerializeField]
+    private TMP_Text WinText;
+    [SerializeField]
+    private TMP_Text Rotation;
     public void endGame() 
     {
         Application.Quit();
     }
+    public void WinGame()
+    {
+
+    }
     void Start()
     {
     positionChange = GetComponent<PositionChange>();
+    shipController = GetComponent<ShipController>();
 
     AccelerationPlayer = new float[3];
     speedText = new float[3];
@@ -43,6 +54,10 @@ public class Player : MonoBehaviour
     AccelerationPlayer[0] = 0;
     AccelerationPlayer[1] = 0;
     AccelerationPlayer[2] = 0;
+
+     
+    GameObject win = GameObject.FindWithTag("Win");
+    WinTransform = win.transform.position;
     }
     void Update()
     {
@@ -64,11 +79,14 @@ public class Player : MonoBehaviour
             speedText[2] = positionChange.SpeedZ * speedTimer;
             SpeedScore.text = "SpeedX" + speedText[0].ToString("0.00") + "\r\n" + "SpeedY" + speedText[1].ToString("0.00") + "\r\n" + "SpeedZ" + speedText[2].ToString("0.00");
 
-            TransformText[0] = positionChange.positionOwn[0];
-            TransformText[1] = positionChange.positionOwn[1];
-            TransformText[2] = positionChange.positionOwn[2];
-
+           
             TransformPosition.text = "x" + positionChange.positionOwn[0].ToString("0.0") + "\r\n" + "y" + positionChange.positionOwn[1].ToString("0.0") + "\r\n" + "z" + positionChange.positionOwn[2].ToString("0.0");
+
+
+            WinText.text = "WinPostion" + "\r\n" + "x" + WinTransform.x.ToString("0.0") + "\r\n" + "y" + WinTransform.y.ToString("0.0") + "\r\n" + "z" + WinTransform.z.ToString("0.0");
+
+            Rotation.text = "Rotation" + "\r\n" + "pushInX" + shipController.push[0].ToString("0.0") + "%" + "\r\n" + "pushInZ" + shipController.push[1].ToString("0.0") + "%";
+
 
             timer2 = 0;
         }

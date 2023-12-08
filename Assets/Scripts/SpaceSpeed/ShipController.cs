@@ -19,13 +19,15 @@ public class ShipController : MonoBehaviour
 
     private float powerFromBack = 0.001f;
 
-    private float[] push;
+    public float[] push;
 
    
     private void Start()
     {
         PositionChange = GetComponent<PositionChange>();
         Player1 = GetComponent<Player>();
+
+        push = new float[2];
 
     }
     void Update()
