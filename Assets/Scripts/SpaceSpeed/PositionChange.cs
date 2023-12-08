@@ -55,35 +55,54 @@ public class PositionChange : MonoBehaviour
                 foreach (Collider collider in Koldt)
                 {
                     PositionChange positionChange = collider.GetComponent<PositionChange>();
+
+                //Chechk if it is own position
                 if (positionChange != OwnPositionChange)
                 {
                     Gravity gravity = collider.GetComponent<Gravity>();
 
                     Debug.Log("INSIDE");
-                
+
                     HealthScript = GetComponent<Health>();
                     GameObject gameObjectChecker = GetComponent<GameObject>();
-                if (gravity != null)
-                {
-                    HealthScript.BodyHealth = HealthScript.BodyHit(HealthScript.BodyHealth, SpeedX, SpeedY, SpeedZ, positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ, gravity.MassKiloGram);
-                }
-                    if (gameObjectChecker.tag != "Win") 
-                    {
-                        // Need to change this for moment so that function with the mass and things like that.  
+                    if (positionChange != null) {
+                        if (gravity != null)
+                        {
+                            HealthScript.BodyHealth = HealthScript.BodyHit(HealthScript.BodyHealth, SpeedX, SpeedY, SpeedZ, positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ, gravity.MassKiloGram);
+                        }
+
                         SpeedX = SpeedX * -1;
                         SpeedY = SpeedY * -1;
                         SpeedZ = SpeedZ * -1;
+
+                        Debug.Log("Sped");
+                        if (gameObjectChecker.tag == "Win")
+                        {
+                            Player player1 = GetComponent<Player>();
+                            if (player1 != null)
+                            {
+                                player1.WinGame();
+                            }
+                        }
+
                     }
                     else
-                    { 
-                        Player player1 = GetComponent<Player>();
-                        if (player1 != null)
+                    {
+                        SpeedX = SpeedX * -1;
+                        SpeedY = SpeedY * -1;
+                        SpeedZ = SpeedZ * -1;
+
+                        if (gameObjectChecker.tag == "Win")
                         {
-                            player1.WinGame();
+                            Player player1 = GetComponent<Player>();
+                            if (player1 != null)
+                            {
+                                player1.WinGame();
+                            }
                         }
                     }
                 }
-                
+
             }
             timer = 0;
         }

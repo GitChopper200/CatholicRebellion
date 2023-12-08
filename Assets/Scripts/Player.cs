@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
 
     private float[] speedText;
     private int speedTimer = 10;
-    private float[] TransformText;
+    private float[] pushProcent;
+    private float[] falsePushProcent;
 
     private Vector3 WinTransform;
 
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
     }
     public void WinGame()
     {
-
+        Debug.Log("Win");
     }
     void Start()
     {
@@ -49,15 +50,14 @@ public class Player : MonoBehaviour
 
     AccelerationPlayer = new float[3];
     speedText = new float[3];
-    TransformText = new float[3];
+    pushProcent = new float[2];
+    falsePushProcent = new float[2];
 
     AccelerationPlayer[0] = 0;
     AccelerationPlayer[1] = 0;
     AccelerationPlayer[2] = 0;
 
-     
-    GameObject win = GameObject.FindWithTag("Win");
-    WinTransform = win.transform.position;
+    GameObject[] win = GameObject.FindGameObjectsWithTag("Win");
     }
     void Update()
     {
@@ -85,7 +85,15 @@ public class Player : MonoBehaviour
 
             WinText.text = "WinPostion" + "\r\n" + "x" + WinTransform.x.ToString("0.0") + "\r\n" + "y" + WinTransform.y.ToString("0.0") + "\r\n" + "z" + WinTransform.z.ToString("0.0");
 
-            Rotation.text = "Rotation" + "\r\n" + "pushInX" + shipController.push[0].ToString("0.0") + "%" + "\r\n" + "pushInZ" + shipController.push[1].ToString("0.0") + "%";
+            falsePushProcent = shipController.RotationSplit(this.transform.rotation.eulerAngles.y);
+
+            pushProcent[0] = falsePushProcent[0] / falsePushProcent[1];
+            pushProcent[1] = falsePushProcent[1] / falsePushProcent[0];
+
+            pushProcent[0] *= 10;
+            pushProcent[1] *= 10;
+
+            Rotation.text = "Rotation" + "\r\n" + "pushInX" + pushProcent[0].ToString("0") + "%" + "\r\n" + "pushInZ" + pushProcent[1].ToString("0") + "%";
 
 
             timer2 = 0;
