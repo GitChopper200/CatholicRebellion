@@ -52,10 +52,13 @@ public class AstroidSpawner : MonoBehaviour
     {
         Debug.Log("njsdgghjdfs");
         GameObject spawnedObject = Instantiate(spawnPrefab, transform.position, Quaternion.identity);
+        PositionChange positionChange = GetComponent<PositionChange>();
         
         Vector3 directionToPlayer = (transform.position-spawnedObject.transform.position).normalized;
-        
-        spawnedObject.transform.position += directionToPlayer * speed * Time.deltaTime;
+
+        positionChange.SpeedX += directionToPlayer[0] * speed;
+        positionChange.SpeedY += directionToPlayer[1] * speed;
+        positionChange.SpeedZ += directionToPlayer[2] * speed;
 
     }
 

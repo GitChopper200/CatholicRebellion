@@ -12,9 +12,14 @@ GameObject:
   - component: {fileID: 3133106247832416246}
   - component: {fileID: 8443506854427193690}
   - component: {fileID: 8034810976906347546}
+  - component: {fileID: 1437554440942309039}
+  - component: {fileID: 1955517804289118892}
+  - component: {fileID: 5285250547035452478}
+  - component: {fileID: -8054033958372183173}
+  - component: {fileID: -3392749081529517531}
   m_Layer: 0
   m_Name: Asteroid
-  m_TagString: Untagged
+  m_TagString: Gravity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,3 +111,94 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4711208715938537054, guid: 9227a806573c9ea4fbdc3f9a79cfbd40, type: 3}
+--- !u!114 &1437554440942309039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138398922069710774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962838e1d149f7746b3d5b33d83ee583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  spawnDelay: 2
+  spawnPrefab: {fileID: 0}
+  timer: 0
+  countDownTimer: 5
+--- !u!114 &1955517804289118892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138398922069710774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43da5e05d195fba4690e0aeb27582ade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionRadius: 3
+--- !u!136 &5285250547035452478
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138398922069710774}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009552009
+  m_Height: 0.017280221
+  m_Direction: 1
+  m_Center: {x: 0.000010427553, y: 0.00027887477, z: -0.0009791492}
+--- !u!114 &-8054033958372183173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138398922069710774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04e4cb99aebc4e4d874e1846b54031f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelerationX: 0
+  accelerationY: 0
+  accelerationZ: 0
+  falseAccelerationX: 0
+  falseAccelerationY: 0
+  falseAccelerationZ: 0
+  CalculateOn: 1
+--- !u!114 &-3392749081529517531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138398922069710774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7706edf5baf4a794ba70a10848e1a01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anotherCircel: {fileID: 0}
+  mass: 0
+  waitTime: 0.125
+  SpeedX: 0
+  SpeedY: 0
+  SpeedZ: 0
+  positionOwn: {x: 0, y: 0, z: 0}
