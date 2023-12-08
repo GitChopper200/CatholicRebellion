@@ -64,7 +64,8 @@ public class PositionChange : MonoBehaviour
                     Debug.Log("INSIDE");
 
                     HealthScript = GetComponent<Health>();
-                    GameObject gameObjectChecker = GetComponent<GameObject>();
+                    GameObject gameObjectChecker = collider.gameObject;
+                    Debug.Log("navn eller tag "+ gameObjectChecker.tag);
                     if (positionChange != null) {
                         if (gravity != null)
                         {
@@ -75,7 +76,7 @@ public class PositionChange : MonoBehaviour
                         SpeedY = SpeedY * -1;
                         SpeedZ = SpeedZ * -1;
 
-                        Debug.Log("Sped");
+                        
                         if (gameObjectChecker.tag == "Win")
                         {
                             Player player1 = GetComponent<Player>();
