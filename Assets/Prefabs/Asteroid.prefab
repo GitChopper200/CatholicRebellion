@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43da5e05d195fba4690e0aeb27582ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionRadius: 3
+  collisionRadius: 0.0125
 --- !u!136 &5285250547035452478
 CapsuleCollider:
   m_ObjectHideFlags: 0
