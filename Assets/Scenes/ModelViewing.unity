@@ -336,8 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962838e1d149f7746b3d5b33d83ee583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.5
   spawnDelay: 2
+  spawnRadius: 5
   spawnPrefab: {fileID: 2069989601}
   timer: 0
   countDownTimer: 5
