@@ -87,15 +87,9 @@ public class Player : MonoBehaviour
 
             WinText.text = "WinPostion" + "\r\n" + "x" + WinTransform.x.ToString("0.0") + "\r\n" + "y" + WinTransform.y.ToString("0.0") + "\r\n" + "z" + WinTransform.z.ToString("0.0");
 
-            falsePushProcent = shipController.RotationSplit(this.transform.rotation.eulerAngles.y);
+            pushProcent = PushProcent(this.transform.rotation.eulerAngles.y);
 
-            pushProcent[0] = falsePushProcent[0] / falsePushProcent[1];
-            pushProcent[1] = falsePushProcent[1] / falsePushProcent[0];
-
-            pushProcent[0] *= 10;
-            pushProcent[1] *= 10;
-
-            Rotation.text = "Rotation" + "\r\n" + "pushInX" + pushProcent[0].ToString("0") + "%" + "\r\n" + "pushInZ" + pushProcent[1].ToString("0") + "%";
+            Rotation.text = "Rotation" + "\r\n" + "pushInX" + pushProcent[0].ToString("0.0") + "%" + "\r\n" + "pushInZ" + pushProcent[1].ToString("0.0") + "%";
 
 
             timer2 = 0;
@@ -163,7 +157,34 @@ public class Player : MonoBehaviour
         Debug.Log(acceleration[0] + "" + acceleration[1] + "" + acceleration[2]);
         return acceleration;
     }
-    
 
-        
+    private float[] PushProcent(float Roation)
+    {
+        float[] procent = new float[2];
+        if (Roation >= 0 && Roation <= 90)
+        {
+            procent[0] = Roation / 90;
+            procent[1] = 90 / Roation;
+
+        }
+        else if (Roation > 90 && Roation <= 180)
+        {
+            procent[0] = Roation / 180;
+            procent[1] = -180 / Roation;
+        }
+        else if (Roation > 180 && Roation <= 270)
+        {
+
+            procent[0] = Roation / 270;
+            procent[1] = 270 / Roation;
+        }
+        else if (Roation > 270 && Roation <= 360)
+        {
+
+            procent[0] = Roation / 360;
+            procent[1] = 360 / Roation;
+        }
+        return procent;
+    }
+
 }

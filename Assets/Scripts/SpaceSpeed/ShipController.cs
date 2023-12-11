@@ -48,9 +48,7 @@ public class ShipController : MonoBehaviour
             push = RotationSplit(rotationQuaternion.eulerAngles.y);
             ShipAccelerationX = push[0] * -powerFromBack; 
             ShipAccelerationZ = push[1] * powerFromBack;
-            Debug.Log(push[0] + "SpeedX");
-            Debug.Log(push[1] + "SpeedZ");
-            Debug.Log(rotationQuaternion.eulerAngles.y);
+            
         }else if(Input.GetKey(KeyCode.R))
         {
             push = RotationSplit(rotationQuaternion.eulerAngles.y);
@@ -80,7 +78,7 @@ public class ShipController : MonoBehaviour
             Player1.ActivateAcceleration = true;
         }
 
-        if(Input.anyKey && Input.GetKey(KeyCode.Alpha0) != true)
+        if(Input.anyKey && Input.GetKey(KeyCode.Alpha0) != true && Input.GetKey(KeyCode.L) != true && Input.GetKey(KeyCode.R) != true)
         {
             GetComponent<PositionChange>().enabled = true;
             Player1.ActivateAcceleration = false;
