@@ -8,7 +8,9 @@ public class AstroidSpawner : MonoBehaviour
     public float speed = 2f;
 
     public float spawnDelay = 2f;
-    
+
+    public float spawnRadius = 1.5f;
+
     public GameObject spawnPrefab;
 
     public float timer;
@@ -53,9 +55,9 @@ public class AstroidSpawner : MonoBehaviour
         float randomAngle = Random.Range(0f, 360f);
         float angleInRadians = Mathf.Deg2Rad * randomAngle;
 
-        Vector3 spawnPosition = new Vector3(transform.position.x + randomAngle * Mathf.Cos(angleInRadians),
-                                            transform.position.y + randomAngle, 
-                                            transform.position.z + randomAngle * Mathf.Cos(angleInRadians)
+        Vector3 spawnPosition = new Vector3(transform.position.x + spawnRadius * Mathf.Cos(angleInRadians),
+                                            transform.position.y + spawnRadius, 
+                                            transform.position.z + spawnRadius * Mathf.Cos(angleInRadians)
         );
                                             
       
@@ -66,11 +68,9 @@ public class AstroidSpawner : MonoBehaviour
         Debug.Log("njsdgghjdfs");
         GameObject spawnedObject = Instantiate(spawnPrefab, spawnPosition, Quaternion.identity);
         
-        PositionChange positionChange = GetComponent<PositionChange>();
-        
         Vector3 directionToPlayer = (transform.position-spawnedObject.transform.position).normalized;
 
-
+        spawnedObject.transform.position = spawnPosition * speed * Time.deltaTime;
     }
 
 }
