@@ -70,7 +70,7 @@ public class PositionChange : MonoBehaviour
                     if (positionChange != null) {
                         if (gravity != null)
                         {
-                            HealthScript.BodyHealth = HealthScript.BodyHit(HealthScript.BodyHealth, SpeedX, SpeedY, SpeedZ, positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ, gravity.MassKiloGram);
+                           // HealthScript.BodyHealth = HealthScript.BodyHit(HealthScript.BodyHealth, SpeedX, SpeedY, SpeedZ, positionChange.SpeedX, positionChange.SpeedY, positionChange.SpeedZ, gravity.MassKiloGram);
                         }
 
                         SpeedX = SpeedX * -1;

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5285250547035452478}
   - component: {fileID: -8054033958372183173}
   - component: {fileID: -3392749081529517531}
+  - component: {fileID: -5589445119290742888}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Gravity
@@ -122,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43da5e05d195fba4690e0aeb27582ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionRadius: 1
+  collisionRadius: 0.1
 --- !u!136 &5285250547035452478
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -184,3 +185,19 @@ MonoBehaviour:
   SpeedY: 0
   SpeedZ: 0
   positionOwn: {x: 0, y: 0, z: 0}
+--- !u!114 &-5589445119290742888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138398922069710774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa69b786f983ab44a5ad1f9dc34f7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GravityGameObject: []
+  MassKiloGram: 1
+  GravitationelAccellerationFinished: []
+  newInformation: 0

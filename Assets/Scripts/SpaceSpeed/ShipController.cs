@@ -47,9 +47,9 @@ public class ShipController : MonoBehaviour
         {
             push = RotationSplit(rotationQuaternion.eulerAngles.y);
             ShipAccelerationX = push[0] * -powerFromBack; 
-            ShipAccelerationZ = push[1] * -powerFromBack;
+            ShipAccelerationZ = push[1] * powerFromBack;
             Debug.Log(push[0] + "SpeedX");
-            Debug.Log(push[1] + "SpeedY");
+            Debug.Log(push[1] + "SpeedZ");
             Debug.Log(rotationQuaternion.eulerAngles.y);
         }else if(Input.GetKey(KeyCode.R))
         {
@@ -102,32 +102,21 @@ public class ShipController : MonoBehaviour
         {
             pushFrom[0] = -0.011111111111f * Roation + 1;
             pushFrom[1] = 1 - pushFrom[0];
-            Debug.Log("OverR");
-            Debug.LogWarning(pushFrom[0] + "One");
-            Debug.LogWarning(pushFrom[1] + "Two");
+           
         }
         else if (Roation > 90 && Roation <= 180)
         {
             pushFrom[0] = -0.011111111111f * Roation + 1;
             pushFrom[1] = pushFrom[0] + 1;
-            Debug.Log("UnderR");
-            Debug.LogWarning(pushFrom[0] + "One");
-            Debug.LogWarning(pushFrom[1] + "Two");
-        }
+         }
         else if (Roation > 180 && Roation <= 270) {
             pushFrom[1] = -0.011111111111f * Roation + 2;
             pushFrom[0] = 0.011111111111f * Roation + -3;
-            Debug.Log("UnderL");
-            Debug.LogWarning(pushFrom[0] + "One");
-            Debug.LogWarning(pushFrom[1] + "Two");
-        }
+         }
         else if (Roation > 270 && Roation <= 360) 
         {
             pushFrom[0] = 0.011111111111f * Roation -3;
             pushFrom[1] = pushFrom[0] - 1;
-            Debug.Log("OverL");
-            Debug.LogWarning(pushFrom[0] + "One");
-            Debug.LogWarning(pushFrom[1] + "Two");
         }
         return pushFrom;
     }

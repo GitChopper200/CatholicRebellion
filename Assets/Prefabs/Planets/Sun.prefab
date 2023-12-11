@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  MassKiloGram: 100000
+  MassKiloGram: 1e+9
   GravitationelAccellerationFinished: []
   newInformation: 0
 --- !u!135 &2983649074545849571

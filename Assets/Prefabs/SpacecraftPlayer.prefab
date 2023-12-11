@@ -623,6 +623,7 @@ GameObject:
   - component: {fileID: 6265953966307074657}
   - component: {fileID: 5042861562631745240}
   - component: {fileID: 231742866968876805}
+  - component: {fileID: 2987057049694002751}
   m_Layer: 0
   m_Name: SpacecraftPlayer
   m_TagString: Gravity
@@ -639,8 +640,8 @@ Transform:
   m_GameObject: {fileID: 7177227171181849228}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 29.689402, y: -0, z: 16}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 500, y: 200, z: 16}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2990872294889938315}
@@ -782,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43da5e05d195fba4690e0aeb27582ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionRadius: 3
+  collisionRadius: 0.5
 --- !u!114 &5042861562631745240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,6 +816,29 @@ MonoBehaviour:
   TransformPosition: {fileID: 1747934941038237451}
   WinText: {fileID: 7914583885804315850}
   Rotation: {fileID: 1295599777568012764}
+--- !u!136 &2987057049694002751
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177227171181849228}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.036247645
+  m_Height: 0.02785673
+  m_Direction: 1
+  m_Center: {x: -0.0032109432, y: 0.00030862735, z: 0.00018611042}
 --- !u!1 &7351927802572810903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,7 +1204,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2990872294889938315}
   - component: {fileID: 4720005974394119153}
-  - component: {fileID: 3848935979322260802}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1254,11 +1277,3 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3848935979322260802
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8878672839713494136}
-  m_Enabled: 1

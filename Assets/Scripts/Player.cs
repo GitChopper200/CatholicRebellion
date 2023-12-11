@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     AccelerationPlayer[2] = 0;
 
     GameObject win = GameObject.FindWithTag("Win");
-        WinTransform = win.transform.position;
+    WinTransform = win.transform.position;
     }
     void Update()
     {

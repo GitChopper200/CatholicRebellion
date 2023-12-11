@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 867241621}
   - component: {fileID: 867241620}
   - component: {fileID: 867241619}
+  - component: {fileID: 867241622}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -401,6 +402,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867241622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867241618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962838e1d149f7746b3d5b33d83ee583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  spawnDelay: 2
+  spawnRadius: 5
+  spawnPrefab: {fileID: 1138398922069710774, guid: 4f213f2940eb23a4eadcecf255148257, type: 3}
+  timer: 0
+  countDownTimer: 5
 --- !u!114 &1610111043 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1747934941038237451, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
@@ -457,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GravityGameObject: []
-  MassKiloGram: 1e+12
+  MassKiloGram: 100000
   GravitationelAccellerationFinished: []
   newInformation: 0
 --- !u!23 &1996147916
