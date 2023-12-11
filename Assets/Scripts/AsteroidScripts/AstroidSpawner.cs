@@ -9,7 +9,7 @@ public class AstroidSpawner : MonoBehaviour
 
     public float spawnDelay = 2f;
 
-    public float spawnRadius = 1.5f;
+    public float spawnRadius = 5f;
 
     public GameObject spawnPrefab;
 
@@ -60,17 +60,18 @@ public class AstroidSpawner : MonoBehaviour
                                             transform.position.z + spawnRadius * Mathf.Cos(angleInRadians)
         );
                                             
-      
-
-
-
 
         Debug.Log("njsdgghjdfs");
         GameObject spawnedObject = Instantiate(spawnPrefab, spawnPosition, Quaternion.identity);
         
         Vector3 directionToPlayer = (transform.position-spawnedObject.transform.position).normalized;
 
-        spawnedObject.transform.position = spawnPosition * speed * Time.deltaTime;
+        while (true)
+        {
+            spawnedObject.transform.position = spawnPosition * speed * Time.deltaTime;
+        }
+        
     }
-
+    
+    
 }
