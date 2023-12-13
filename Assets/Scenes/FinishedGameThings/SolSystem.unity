@@ -231,7 +231,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -666,7 +666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4343953120412810894, guid: 75bf1d910996a0349b84ff6cb92147d6, type: 3}
       propertyPath: MassKiloGram
-      value: 1e+9
+      value: 100000000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -686,7 +686,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7796179928012413459, guid: 09d302133eb75a643872f380a64ef181, type: 3}
       propertyPath: MassKiloGram
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8539704426001789815, guid: 09d302133eb75a643872f380a64ef181, type: 3}
       propertyPath: m_Name
@@ -792,6 +792,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 31
       objectReference: {fileID: 0}
+    - target: {fileID: 6415142716638169409, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+      propertyPath: maxRayDistance
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 7177227171181849228, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_Name
       value: SpacecraftPlayer
@@ -838,15 +842,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8262993483683515360, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8262993483683515360, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8262993483683515360, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8262993483683515360, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -855,6 +859,10 @@ PrefabInstance:
     - target: {fileID: 8262993483683515360, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126468858703065518, guid: fe420ce541164e94785ec6ef645789dd, type: 3}
+      propertyPath: orthographic size
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -871,7 +879,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1463220425036511255, guid: 8eb12b398ef3ccd42bf1a4007e705163, type: 3}
       propertyPath: MassKiloGram
-      value: 40
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 8211221866739593465, guid: 8eb12b398ef3ccd42bf1a4007e705163, type: 3}
       propertyPath: m_Name
@@ -976,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4542336458286434758, guid: c813e456fba8855428f017d8f7ef66ef, type: 3}
       propertyPath: MassKiloGram
-      value: 50
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1040,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2457867522908238978, guid: a69381aee13845f409d216bf10793c65, type: 3}
       propertyPath: MassKiloGram
-      value: 60
+      value: 600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1060,7 +1068,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5695392423382721341, guid: 67cd3b311b73d9043a35b918ccdf7518, type: 3}
       propertyPath: MassKiloGram
-      value: 60
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6312124961238335364, guid: 67cd3b311b73d9043a35b918ccdf7518, type: 3}
       propertyPath: m_Name
@@ -1165,7 +1173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9010105808216247107, guid: c5cdb74f3e09dfc419102cde430a0553, type: 3}
       propertyPath: MassKiloGram
-      value: 50
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1226,7 +1234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8063532233982401109, guid: 3d8cca402d7cb2a4e9d930a706712db8, type: 3}
       propertyPath: MassKiloGram
-      value: 50
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1247,7 +1255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464337237380199026, guid: d164cade7360f2a46bb1b3c42f862f1c, type: 3}
       propertyPath: MassKiloGram
-      value: 40
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4498061921821684550, guid: d164cade7360f2a46bb1b3c42f862f1c, type: 3}
       propertyPath: m_LocalPosition.x
